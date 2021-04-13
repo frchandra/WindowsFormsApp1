@@ -46,7 +46,7 @@ namespace WindowsFormsApp1
           
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from Rent_Car where Name='"+ Name.ToString() +"' AND Return_Date='' ";
+            cmd.CommandText = "select * from Rent_Car where Name='"+ Name.ToString() +"' ";
             cmd.ExecuteNonQuery();
             DataTable dataTable = new DataTable();
             SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
@@ -83,7 +83,7 @@ namespace WindowsFormsApp1
             int i = Convert.ToInt32(dataGridView1.SelectedCells[0].Value.ToString());
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "update Rent_Car set Return_Date='"+ dateTimePicker1.Value.ToString() +"' where id=" + i + " ";
+            cmd.CommandText = "update Rent_Car set Return_Date='"+ dateTimePicker1.Value.ToString() +"', Is_Returned="+ 1 +" where id=" + i + " ";
             cmd.ExecuteNonQuery();
 
             SqlCommand cmd1 = con.CreateCommand();
@@ -96,6 +96,11 @@ namespace WindowsFormsApp1
             
             panel3.Visible = true;
             fillGrid(textBox1.Text);
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

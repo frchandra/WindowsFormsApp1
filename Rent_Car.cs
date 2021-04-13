@@ -130,13 +130,14 @@ namespace WindowsFormsApp1
             foreach(DataRow dataRow in dataTable.Rows)
             {
                 Car_Quantity = Convert.ToInt32(dataRow["Available_Quantity"].ToString()) ;
+                
             }
             if (Car_Quantity > 0)
             {
 
                 SqlCommand cmd = con.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "insert into Rent_Car values('"+ Name2.Text +"','"+ Email.Text +"','"+ Contact.Text +"','"+ Brand.Text +"','"+ Model.Text +"','"+ Transmision.Text +"','"+ dateTimePicker1.Value.ToString() +"','')";
+                cmd.CommandText = "insert into Rent_Car values('"+ Name2.Text +"','"+ Email.Text +"','"+ Contact.Text +"','"+ Brand.Text +"','"+ Model.Text +"','"+ Transmision.Text + "','" + Label_PricePerDay.Text + "','" + dateTimePicker1.Value.ToString() + "','" + dateTimePicker2.Value.ToString()+ "','" + Label_Total_Price.Text + "', "+ 0 +" )";
                 cmd.ExecuteNonQuery();
 
                 SqlCommand cmd1 = con.CreateCommand();
@@ -272,6 +273,55 @@ namespace WindowsFormsApp1
         {
             Transmision.Text = listBox3.SelectedItem.ToString();
             listBox3.Visible = false;
+
+            
+           
+        }
+
+        private void Transmision_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Name1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+
+            SqlCommand cmd = con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "select Price from Cars_info where Brand='" + Brand.Text + "' AND Model= '"+ Model.Text +"' AND Transmision='"+ Transmision.Text +"' ";
+            cmd.ExecuteNonQuery();
+            DataTable dataTable = new DataTable();
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+            dataAdapter.Fill(dataTable);
+
+            DateTime date1 = dateTimePicker1.Value;
+            DateTime date2 = dateTimePicker2.Value;
+            TimeSpan timeSpan = date2 - date1;
+           
+
+
+
+
+            foreach (DataRow dataRow in dataTable.Rows)
+            {
+                Label_PricePerDay.Text = dataRow["Price"].ToString();
+                double totalPrice = Math.Ceiling(timeSpan.TotalDays) * Convert.ToInt32(dataRow["Price"]);
+
+                Label_Total_Price.Text = totalPrice.ToString();
+               
+            }
+           
         }
     }
 }
