@@ -46,7 +46,7 @@ namespace WindowsFormsApp1
           
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from Rent_Car where Name='"+ Name.ToString() +"' ";
+            cmd.CommandText = "select * from Rent_Car where Name='"+ Name.ToString() +"' AND Is_Returned = "+ 0 +" ";
             cmd.ExecuteNonQuery();
             DataTable dataTable = new DataTable();
             SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
@@ -101,6 +101,47 @@ namespace WindowsFormsApp1
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            double fine = 0;
+            SqlCommand cmd = con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "select * from Rent_Car where Model= '" + Label_Model.Text + "' AND Transmision='" + Label_Transmision.Text + "' AND Name='"+ textBox1.Text +"' ";
+            cmd.ExecuteNonQuery();
+            DataTable dataTable = new DataTable();
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+            dataAdapter.Fill(dataTable);
+
+            DateTime date2 = dateTimePicker1.Value;
+
+
+            foreach (DataRow dataRow in dataTable.Rows)
+            {
+                DateTime date0 = Convert.ToDateTime(dataRow["Rent_Date"]);
+                DateTime date1 = Convert.ToDateTime(dataRow["Return_Date"]);
+                TimeSpan timeSpan1 = date2 - date0;
+                TimeSpan timeSpan0 = date1 - date0;
+                if (Math.Ceiling(timeSpan1.TotalDays) > Math.Ceiling(timeSpan0.TotalDays))
+                {
+                    label3.Visible = true;
+                    label3.Text = string.Concat("Car returned in ", Convert.ToString(Math.Round(timeSpan1.TotalDays-timeSpan0.TotalDays)), " days late");
+                    fine = Math.Round(timeSpan1.TotalDays - timeSpan0.TotalDays) * Convert.ToInt32(dataRow["Price"]);
+
+                }
+                else
+                {
+                    label3.Visible = false;
+                }
+
+                label6.Text = string.Concat(Convert.ToString(dataRow["Price"]), " + ", fine.ToString());
+
+
+
+
+
+            }
         }
     }
 }

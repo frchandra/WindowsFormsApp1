@@ -122,7 +122,7 @@ namespace WindowsFormsApp1
             int Car_Quantity = 0; 
             SqlCommand cmd2 = con.CreateCommand();
             cmd2.CommandType = CommandType.Text;
-            cmd2.CommandText = "select * from Cars_Info where Model='"+ Model.Text +"' ";
+            cmd2.CommandText = "select * from Cars_Info where Brand='"+ Brand.Text +"' AND Model='"+ Model.Text +"' AND Transmision='"+ Transmision.Text +"'  ";
             cmd2.ExecuteNonQuery();
             DataTable dataTable = new DataTable();
             SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd2);
@@ -308,9 +308,6 @@ namespace WindowsFormsApp1
             DateTime date1 = dateTimePicker1.Value;
             DateTime date2 = dateTimePicker2.Value;
             TimeSpan timeSpan = date2 - date1;
-           
-
-
 
 
             foreach (DataRow dataRow in dataTable.Rows)
