@@ -157,5 +157,10 @@
     <Folder Include="ID_Card\" />
     <Folder Include="image\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="RentCar.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

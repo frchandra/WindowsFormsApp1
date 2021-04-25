@@ -8,13 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Data.OleDb;
 
 namespace WindowsFormsApp1
 {
    
     public partial class View_Cars : Form
-    { 
-        SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Rental_Mobil;Integrated Security=True;Pooling=False");
+    {
+        //SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Rental_Mobil;Integrated Security=True;Pooling=False");
+        OleDbConnection con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\RentCar.accdb");
         public View_Cars()
         {
             InitializeComponent();
@@ -42,12 +44,12 @@ namespace WindowsFormsApp1
             try
             {
                 con.Open();
-                SqlCommand cmd = con.CreateCommand();
+                OleDbCommand cmd = con.CreateCommand();
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "select * from Cars_Info where Brand like('%"+ textBox1.Text + "%') or Model like('%" + textBox1.Text + "%')";
                 cmd.ExecuteNonQuery();
                 DataTable dataTable = new DataTable();
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+                OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
                 dataAdapter.Fill(dataTable);
                 i = Convert.ToInt32(dataTable.Rows.Count.ToString());
                 dataGridView1.DataSource = dataTable;
@@ -83,7 +85,7 @@ namespace WindowsFormsApp1
             try
             {
                 con.Open();
-                SqlCommand cmd = con.CreateCommand();
+                OleDbCommand cmd = con.CreateCommand();
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "update Cars_Info set Brand='"+ Brand.Text +"', Model='"+ Model.Text +"', Transmision='"+ Transmision.Text +"', Max_Passenger='"+ Max_Passenger.Text +"', Price='"+ Price.Text +"', Quantity='"+ Quantity.Text +"' where id="+i+"    ";
                 cmd.ExecuteNonQuery();
@@ -106,12 +108,12 @@ namespace WindowsFormsApp1
             try
             {
                 con.Open();
-                SqlCommand cmd = con.CreateCommand();
+                OleDbCommand cmd = con.CreateCommand();
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "select * from Cars_Info where id="+i+"";
                 cmd.ExecuteNonQuery();
                 DataTable dataTable = new DataTable();
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+                OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
                 dataAdapter.Fill(dataTable);
                 foreach(DataRow dataRow in dataTable.Rows)
                 {
@@ -144,12 +146,12 @@ namespace WindowsFormsApp1
             try
             {
                 con.Open();
-                SqlCommand cmd = con.CreateCommand();
+                OleDbCommand cmd = con.CreateCommand();
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "select * from Cars_Info";
                 cmd.ExecuteNonQuery();
                 DataTable dataTable = new DataTable();
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+                OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
                 dataAdapter.Fill(dataTable);
                 dataGridView1.DataSource = dataTable;
 

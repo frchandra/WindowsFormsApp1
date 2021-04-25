@@ -16,8 +16,8 @@ namespace WindowsFormsApp1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
-            //Application.Run(new View_Cars()); 
+              Application.Run(new Login());
+            //Application.Run(new View_Cars());
             //Application.Run(new Add_Cars());
             //Application.Run(new Add_Members()); 
             //Application.Run(new View_Members());

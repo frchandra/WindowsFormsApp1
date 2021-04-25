@@ -16,3 +16,4 @@ D:\Proyek\programs\program\oop_kuliah\WindowsFormsApp1\obj\Debug\Rental_Mobil.cs
 D:\Proyek\programs\program\oop_kuliah\WindowsFormsApp1\obj\Debug\Rental_Mobil.csproj.CoreCompileInputs.cache
 D:\Proyek\programs\program\oop_kuliah\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 D:\Proyek\programs\program\oop_kuliah\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+D:\Proyek\programs\program\oop_kuliah\WindowsFormsApp1\bin\Debug\RentCar.accdb

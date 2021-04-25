@@ -8,13 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-
+using System.Data.OleDb;
 
 namespace WindowsFormsApp1
 {
     public partial class Login : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Rental_Mobil;Integrated Security=True;Pooling=False");
+        //SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Rental_Mobil;Integrated Security=True;Pooling=False");
+
+        OleDbConnection con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\RentCar.accdb");
+
+
         int count = 0;
         public Login()
         {
@@ -29,13 +33,13 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
              
-            SqlCommand cmd = con.CreateCommand();
+            OleDbCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "select * from admin where Username='" + textBox1.Text + "' and Password='" + textBox2.Text + "' ";
 
             cmd.ExecuteNonQuery();
             DataTable dataTable = new DataTable();
-            SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+            OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
             dataAdapter.Fill(dataTable);
             count = Convert.ToInt32( dataTable.Rows.Count.ToString());
             if(count == 0)
