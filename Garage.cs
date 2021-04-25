@@ -56,7 +56,7 @@ namespace WindowsFormsApp1
             
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from Rent_Car where Model='"+ i.ToString() +"'  AND Return_Date='' ";
+            cmd.CommandText = "select * from Rent_Car where Model='"+ i.ToString() +"'  AND Is_Returned='FALSE' ";
             cmd.ExecuteNonQuery();
             DataTable dataTable = new DataTable();
             SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
