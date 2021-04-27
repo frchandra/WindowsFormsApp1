@@ -2,6 +2,7 @@
 using System.Data;
 using System.Windows.Forms;
 using System.Data.OleDb;
+using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1
 {
@@ -17,14 +18,20 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             int i = 0;
-            OleDbCommand cmd = con.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select Name, Email, Contact from Members_Info where Name='"+ Name1.Text +"' ";
-            cmd.ExecuteNonQuery();
-            DataTable dataTable = new DataTable();
-            OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
-            dataAdapter.Fill(dataTable);
-            i = Convert.ToInt32(dataTable.Rows.Count.ToString());
+
+            MemberModel memberModel = new MemberModel();
+            i = memberModel.searchByName(Name1.Text);
+
+
+            //OleDbCommand cmd = con.CreateCommand();
+            //cmd.CommandType = CommandType.Text;
+            //cmd.CommandText = "select Name, Email, Contact from Members_Info where Name='"+ Name1.Text +"' ";
+            //cmd.ExecuteNonQuery();
+
+            //DataTable dataTable = new DataTable();
+            //OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
+            //dataAdapter.Fill(dataTable);
+            //i = Convert.ToInt32(dataTable.Rows.Count.ToString());
             
             if (i == 0)
             {
@@ -32,13 +39,16 @@ namespace WindowsFormsApp1
             }
             else
             {
+                Name2.Text = memberModel.Name;
+                Email.Text = memberModel.Email;
+                Contact.Text = memberModel.Contact;
 
-                foreach ( DataRow dataRow in dataTable.Rows)
-                {
-                    Name2.Text = dataRow["Name"].ToString();
-                    Email.Text = dataRow["Email"].ToString();
-                    Contact.Text = dataRow["Contact"].ToString();
-                }
+                //foreach ( DataRow dataRow in dataTable.Rows)
+                //{
+                //    Name2.Text = dataRow["Name"].ToString();
+                //    Email.Text = dataRow["Email"].ToString();
+                //    Contact.Text = dataRow["Contact"].ToString();
+                //}
             }
 
 
@@ -59,10 +69,12 @@ namespace WindowsFormsApp1
             if (e.KeyCode != Keys.Enter)
             {
                 listBox1.Items.Clear();
+
                 OleDbCommand cmd = con.CreateCommand();
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "select distinct Brand  from Cars_Info where Brand like('%" + Brand.Text + "%')";
                 cmd.ExecuteNonQuery();
+
                 DataTable dataTable = new DataTable();
                 OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
                 dataAdapter.Fill(dataTable);
@@ -104,48 +116,68 @@ namespace WindowsFormsApp1
             listBox1.Visible = false;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) //rent button
         {
-            OleDbCommand cmd = con.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            
-            int car_Quantity = 0;
-            int car_ID = 0;            
-            cmd.CommandText = "select * from Cars_Info where Brand='"+ Brand.Text +"' AND Model='"+ Model.Text +"' AND Transmision='"+ Transmision.Text +"'  ";
-            cmd.ExecuteNonQuery();
-            DataTable dataTable = new DataTable();
-            OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
-            dataAdapter.Fill(dataTable);
-
-            foreach(DataRow dataRow in dataTable.Rows)
-            {
-                car_Quantity = Convert.ToInt32(dataRow["Available_Quantity"]) ;
-                car_ID = Convert.ToInt32(dataRow["ID"]);
-                
-            }
-
+            int car_availableQty = 0;
+            int car_ID = 0; 
             int member_ID = 0;
-            cmd.CommandText = "select * from Members_Info where Name='" + Name2.Text + "' AND Email='" + Email.Text + "' AND Contact='" + Contact.Text +"' ";
-            cmd.ExecuteNonQuery();
-            dataTable = new DataTable();
-            dataAdapter = new OleDbDataAdapter(cmd);
-            dataAdapter.Fill(dataTable);
+            CarModel carModel = new CarModel(Brand.Text, Model.Text, Transmision.Text);
+            MemberModel memberModel = new MemberModel(Name2.Text, Email.Text, Contact.Text);
+            
+            
+            carModel.pullByBMT();
+            car_availableQty = carModel.Available_Quantity;
+            car_ID = carModel.Id;
 
-            foreach (DataRow dataRow in dataTable.Rows)
+            //OleDbCommand cmd = con.CreateCommand();
+            //cmd.CommandType = CommandType.Text;                      
+            //cmd.CommandText = "select * from Cars_Info where Brand='"+ Brand.Text +"' AND Model='"+ Model.Text +"' AND Transmision='"+ Transmision.Text +"'  ";
+            //cmd.ExecuteNonQuery();
+
+            //DataTable dataTable = new DataTable();
+            //OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
+            //dataAdapter.Fill(dataTable);
+
+            //foreach(DataRow dataRow in dataTable.Rows)
+            //{
+            //    car_Quantity = Convert.ToInt32(dataRow["Available_Quantity"]) ;
+            //    car_ID = Convert.ToInt32(dataRow["ID"]);
+
+            //}
+
+
+
+            memberModel.pullByNEC();
+            member_ID = memberModel.Id;
+            //cmd.CommandText = "select * from Members_Info where Name='" + Name2.Text + "' AND Email='" + Email.Text + "' AND Contact='" + Contact.Text +"' ";
+            //cmd.ExecuteNonQuery();
+
+            //dataTable = new DataTable();
+            //dataAdapter = new OleDbDataAdapter(cmd);
+            //dataAdapter.Fill(dataTable);
+
+            //foreach (DataRow dataRow in dataTable.Rows)
+            //{
+            //    member_ID = Convert.ToInt32(dataRow["ID"]);
+
+            //}
+
+
+            if (car_availableQty > 0)
             {
-                member_ID = Convert.ToInt32(dataRow["ID"]);
+                RentCarModel rentCarModel = new RentCarModel(member_ID, car_ID, dateTimePicker1.Value.ToString(), dateTimePicker2.Value.ToString(), Label_Total_Price.Text, false);
+                rentCarModel.push();
+                carModel.updateAvailableQty();
 
-            }
+                //cmd.CommandText = "insert into Rent_Car (Car_ID, Member_ID) values('"+ Name2.Text +"','"+ Email.Text +"','"+ Contact.Text +"','"+ Brand.Text +"','"+ Model.Text +"','"+ Transmision.Text + "','" + Label_PricePerDay.Text + "','" + dateTimePicker1.Value.ToString() + "','" + dateTimePicker2.Value.ToString()+ "','" + Label_Total_Price.Text + "', "+ 0 +" )";
+                //cmd.ExecuteNonQuery();
 
 
-            if (car_Quantity > 0)
-            {
-                cmd.CommandText = "insert into Rent_Car (Car_ID, Member_ID) values('"+ Name2.Text +"','"+ Email.Text +"','"+ Contact.Text +"','"+ Brand.Text +"','"+ Model.Text +"','"+ Transmision.Text + "','" + Label_PricePerDay.Text + "','" + dateTimePicker1.Value.ToString() + "','" + dateTimePicker2.Value.ToString()+ "','" + Label_Total_Price.Text + "', "+ 0 +" )";
-                cmd.ExecuteNonQuery();
-                OleDbCommand cmd1 = con.CreateCommand();
-                cmd1.CommandType = CommandType.Text;
-                cmd1.CommandText = "update Cars_Info set Available_Quantity=Available_Quantity-1 where Model='"+ Model.Text +"' AND Transmision='"+ Transmision.Text +"' ";
-                cmd1.ExecuteNonQuery();
+
+                //OleDbCommand cmd1 = con.CreateCommand();
+                //cmd1.CommandType = CommandType.Text;
+                //cmd1.CommandText = "update Cars_Info set Available_Quantity=Available_Quantity-1 where Model='" + Model.Text + "' AND Transmision='" + Transmision.Text + "' ";
+                //cmd1.ExecuteNonQuery();
 
 
                 MessageBox.Show("Data Added Successfully");
@@ -241,7 +273,7 @@ namespace WindowsFormsApp1
         }
 
         private void Transmision_KeyDown(object sender, KeyEventArgs e)
-        {
+       {
             if (e.KeyCode == Keys.Down)
             {
                 listBox3.Focus();
@@ -268,7 +300,7 @@ namespace WindowsFormsApp1
         }
 
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)//calcuate price
         {
 
 

@@ -17,10 +17,12 @@ namespace WindowsFormsApp1.Models
         private string contact;
         OleDbConnection con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\RentCar.accdb");
 
+        public int Id { get => id; }
         public string Name { get => name; }
         public string Img_Path { get => img_Path; }
         public string Email { get => email; }
         public string Contact { get => contact; }
+        
 
         public MemberModel(int id, string name, string email, string contact)
         {
@@ -38,6 +40,13 @@ namespace WindowsFormsApp1.Models
             this.contact = contact;
         }
 
+        public MemberModel(string name, string email, string contact)
+        {
+            this.name = name;            
+            this.email = email;
+            this.contact = contact;
+        }
+
         public MemberModel(int id)
         {
             this.id = id;
@@ -49,7 +58,7 @@ namespace WindowsFormsApp1.Models
         }
 
 
-        public void pull()
+        public void pullById()
         {
             con.Open();
             OleDbCommand cmd = new OleDbCommand("select * from Members_Info where id = "+ id +" ", con);
@@ -62,11 +71,54 @@ namespace WindowsFormsApp1.Models
 
             foreach (DataRow dataRow in dataTable.Rows)
             {
+                id = Convert.ToInt32(dataRow["ID"]);
                 name = dataRow["Name"].ToString();
                 email = dataRow["Email"].ToString();
                 contact = dataRow["Contact"].ToString();
             }
+        }
 
+        public void pullByNEC()
+        {
+            con.Open();
+            OleDbCommand cmd = new OleDbCommand("select * from Members_Info where Name='" + name + "' AND Email='" + email + "' AND Contact='" + contact + "' ", con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+            DataTable dataTable = new DataTable();
+            OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
+            dataAdapter.Fill(dataTable);
+
+            foreach (DataRow dataRow in dataTable.Rows)
+            {
+                id = Convert.ToInt32(dataRow["ID"]);
+                name = dataRow["Name"].ToString();
+                email = dataRow["Email"].ToString();
+                contact = dataRow["Contact"].ToString();
+            }
+        }
+
+
+
+        public int searchByName(string name)
+        {
+            con.Open();
+            OleDbCommand cmd = new OleDbCommand("select * from Members_Info where Name='"+ name +"' ", con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+            DataTable dataTable = new DataTable();
+            OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
+            dataAdapter.Fill(dataTable);
+
+            foreach (DataRow dataRow in dataTable.Rows)
+            {
+                this.name = dataRow["Name"].ToString();
+                email = dataRow["Email"].ToString();
+                contact = dataRow["Contact"].ToString();
+            }
+            int i = Convert.ToInt32(dataTable.Rows.Count.ToString());
+            return i;
         }
 
         public void push()
@@ -76,6 +128,7 @@ namespace WindowsFormsApp1.Models
             cmd.ExecuteNonQuery();
             con.Close();
         }
+
 
         public void update(string img_Path)
         {

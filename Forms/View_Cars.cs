@@ -69,7 +69,7 @@ namespace WindowsFormsApp1
             try
             {
                 CarModel carModel = new CarModel(i);
-                carModel.pull();
+                carModel.pullByBMT();
 
                 Brand.Text = carModel.Brand;
                 Model.Text = carModel.Model;

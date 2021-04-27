@@ -64,7 +64,7 @@ namespace WindowsFormsApp1
             int i = Convert.ToInt32(dataGridView1.SelectedCells[0].Value.ToString());
 
             MemberModel memberModel = new MemberModel(i);
-            memberModel.pull();
+            memberModel.pullById();
 
             Name.Text = memberModel.Name;
             Email.Text = memberModel.Email;

@@ -81,12 +81,13 @@
     <Compile Include="MDI_User.Designer.cs">
       <DependentUpon>MDI_User.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\RentCarModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rent_Car.cs">
+    <Compile Include="Forms\Rent_Car.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Rent_Car.Designer.cs">
+    <Compile Include="Forms\Rent_Car.Designer.cs">
       <DependentUpon>Rent_Car.cs</DependentUpon>
     </Compile>
     <Compile Include="Return_Car.cs">
@@ -132,7 +133,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Rent_Car.resx">
+    <EmbeddedResource Include="Forms\Rent_Car.resx">
       <DependentUpon>Rent_Car.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Return_Car.resx">
