@@ -59,7 +59,7 @@ namespace WindowsFormsApp1
             this.dataGridView1.Size = new System.Drawing.Size(987, 345);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            
             // 
             // textBox1
             // 
@@ -115,7 +115,7 @@ namespace WindowsFormsApp1
             this.label4.Size = new System.Drawing.Size(94, 29);
             this.label4.TabIndex = 7;
             this.label4.Text = "Contact";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            
             // 
             // label3
             // 

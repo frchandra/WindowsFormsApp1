@@ -95,7 +95,7 @@ namespace WindowsFormsApp1
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(206, 37);
             this.comboBox1.TabIndex = 6;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            
             // 
             // label1
             // 
@@ -106,7 +106,7 @@ namespace WindowsFormsApp1
             this.label1.Size = new System.Drawing.Size(86, 31);
             this.label1.TabIndex = 7;
             this.label1.Text = "Brand";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            
             // 
             // label2
             // 
@@ -157,7 +157,7 @@ namespace WindowsFormsApp1
             this.label6.Size = new System.Drawing.Size(116, 31);
             this.label6.TabIndex = 12;
             this.label6.Text = "Quantity";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+            
             // 
             // button1
             // 
@@ -190,7 +190,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.textBox1);
             this.Name = "Add_Cars";
             this.Text = "Add_Cars";
-            this.Load += new System.EventHandler(this.Add_Cars_Load);
+            
             this.ResumeLayout(false);
             this.PerformLayout();
 

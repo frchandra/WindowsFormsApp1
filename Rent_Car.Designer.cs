@@ -107,7 +107,7 @@ namespace WindowsFormsApp1
             this.listBox3.TabIndex = 20;
             this.listBox3.Visible = false;
             this.listBox3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listBox3_MouseClick);
-            this.listBox3.SelectedIndexChanged += new System.EventHandler(this.listBox3_SelectedIndexChanged);
+            
             this.listBox3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listBox3_KeyDown);
             // 
             // listBox2
@@ -120,7 +120,7 @@ namespace WindowsFormsApp1
             this.listBox2.TabIndex = 19;
             this.listBox2.Visible = false;
             this.listBox2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listBox2_MouseClick);
-            this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
+            
             this.listBox2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listBox2_KeyDown);
             // 
             // listBox1
@@ -133,7 +133,7 @@ namespace WindowsFormsApp1
             this.listBox1.TabIndex = 18;
             this.listBox1.Visible = false;
             this.listBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseClick);
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            
             this.listBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listBox1_KeyDown);
             // 
             // button2
@@ -184,7 +184,7 @@ namespace WindowsFormsApp1
             this.Transmision.Name = "Transmision";
             this.Transmision.Size = new System.Drawing.Size(221, 29);
             this.Transmision.TabIndex = 13;
-            this.Transmision.TextChanged += new System.EventHandler(this.Transmision_TextChanged);
+            
             this.Transmision.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Transmision_KeyDown);
             this.Transmision.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Transmision_KeyUp);
             // 
@@ -197,7 +197,7 @@ namespace WindowsFormsApp1
             this.label6.Size = new System.Drawing.Size(127, 13);
             this.label6.TabIndex = 12;
             this.label6.Text = "Search Member by Name";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+            
             // 
             // label5
             // 
@@ -257,7 +257,7 @@ namespace WindowsFormsApp1
             this.Model.Name = "Model";
             this.Model.Size = new System.Drawing.Size(221, 29);
             this.Model.TabIndex = 6;
-            this.Model.TextChanged += new System.EventHandler(this.Model_TextChanged);
+            
             this.Model.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Model_KeyDown);
             this.Model.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Model_KeyUp);
             // 
@@ -319,7 +319,7 @@ namespace WindowsFormsApp1
             this.Name1.Name = "Name1";
             this.Name1.Size = new System.Drawing.Size(182, 29);
             this.Name1.TabIndex = 0;
-            this.Name1.TextChanged += new System.EventHandler(this.Name1_TextChanged);
+            
             // 
             // label9
             // 

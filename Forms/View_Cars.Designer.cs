@@ -64,7 +64,7 @@ namespace WindowsFormsApp1
             this.dataGridView1.Size = new System.Drawing.Size(1049, 336);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            
             // 
             // panel1
             // 
@@ -104,7 +104,7 @@ namespace WindowsFormsApp1
             this.label1.Size = new System.Drawing.Size(151, 31);
             this.label1.TabIndex = 0;
             this.label1.Text = "Search Car";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+           
             // 
             // panel2
             // 
@@ -126,7 +126,7 @@ namespace WindowsFormsApp1
             this.panel2.Size = new System.Drawing.Size(1049, 374);
             this.panel2.TabIndex = 2;
             this.panel2.Visible = false;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            
             // 
             // button2
             // 
@@ -162,7 +162,7 @@ namespace WindowsFormsApp1
             this.Max_Passenger.Name = "Max_Passenger";
             this.Max_Passenger.Size = new System.Drawing.Size(292, 38);
             this.Max_Passenger.TabIndex = 10;
-            this.Max_Passenger.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
+            
             // 
             // Transmision
             // 
@@ -197,7 +197,7 @@ namespace WindowsFormsApp1
             this.label7.Size = new System.Drawing.Size(194, 31);
             this.label7.TabIndex = 6;
             this.label7.Text = "Available Units";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
+            
             // 
             // label6
             // 
@@ -248,7 +248,7 @@ namespace WindowsFormsApp1
             this.label2.Size = new System.Drawing.Size(86, 31);
             this.label2.TabIndex = 1;
             this.label2.Text = "Brand";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            
             // 
             // View_Cars
             // 

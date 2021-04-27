@@ -46,30 +46,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Add_Cars.cs">
+    <Compile Include="Forms\Add_Cars.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Add_Cars.Designer.cs">
+    <Compile Include="Forms\Add_Cars.Designer.cs">
       <DependentUpon>Add_Cars.cs</DependentUpon>
     </Compile>
-    <Compile Include="Add_Members.cs">
+    <Compile Include="Forms\Add_Members.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Add_Members.Designer.cs">
+    <Compile Include="Forms\Add_Members.Designer.cs">
       <DependentUpon>Add_Members.cs</DependentUpon>
     </Compile>
     <Compile Include="Interface1.cs" />
-    <Compile Include="Pass.cs" />
+    <Compile Include="Models\CarModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\MemberModel.cs" />
+    <Compile Include="Models\Encryptor.cs" />
     <Compile Include="Garage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Garage.Designer.cs">
       <DependentUpon>Garage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login.cs">
+    <Compile Include="Forms\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
+    <Compile Include="Forms\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="MDI_User.cs">
@@ -92,28 +95,29 @@
     <Compile Include="Return_Car.Designer.cs">
       <DependentUpon>Return_Car.cs</DependentUpon>
     </Compile>
-    <Compile Include="View_Cars.cs">
+    <Compile Include="System\Configuration\ConfigurationManager.cs" />
+    <Compile Include="Forms\View_Cars.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View_Cars.Designer.cs">
+    <Compile Include="Forms\View_Cars.Designer.cs">
       <DependentUpon>View_Cars.cs</DependentUpon>
     </Compile>
-    <Compile Include="View_Members.cs">
+    <Compile Include="Forms\View_Members.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View_Members.Designer.cs">
+    <Compile Include="Forms\View_Members.Designer.cs">
       <DependentUpon>View_Members.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Add_Cars.resx">
+    <EmbeddedResource Include="Forms\Add_Cars.resx">
       <DependentUpon>Add_Cars.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Add_Members.resx">
+    <EmbeddedResource Include="Forms\Add_Members.resx">
       <DependentUpon>Add_Members.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Garage.resx">
       <DependentUpon>Garage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
+    <EmbeddedResource Include="Forms\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDI_User.resx">
@@ -134,10 +138,10 @@
     <EmbeddedResource Include="Return_Car.resx">
       <DependentUpon>Return_Car.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View_Cars.resx">
+    <EmbeddedResource Include="Forms\View_Cars.resx">
       <DependentUpon>View_Cars.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View_Members.resx">
+    <EmbeddedResource Include="Forms\View_Members.resx">
       <DependentUpon>View_Members.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">

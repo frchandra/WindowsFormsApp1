@@ -1,28 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using System.Data.SqlClient;
-
+using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1
 {
     
     public partial class Add_Members : Form
-
     {
+        private string wanted_path;
+        private string pwd = Encryptor.GetRandomPassword(20);
 
-        SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Rental_Mobil;Integrated Security=True;Pooling=False");
-
-        
-        string wanted_path;
-        string pwd = Pass.GetRandomPassword(20);
         public Add_Members()
         {
             InitializeComponent();
@@ -30,6 +18,7 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
+
             wanted_path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
             DialogResult result = openFileDialog1.ShowDialog();
             openFileDialog1.Filter = "JPEG files (*.jpeg)|*.jpeg|PNG FIles (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
@@ -40,8 +29,6 @@ namespace WindowsFormsApp1
                 pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             }
 
-
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -51,12 +38,10 @@ namespace WindowsFormsApp1
                 string img_path;
                 File.Copy(openFileDialog1.FileName, wanted_path + "\\ID_Card\\" + pwd + ".jpg");
                 img_path = "ID_Card\\" + pwd + ".jpg";
-                con.Open();
-                SqlCommand cmd = con.CreateCommand();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "insert into Members_Info values('"+ textBox1.Text +"','"+ img_path.ToString() +"','"+ textBox3.Text + "','"+ textBox4.Text +"')";
-                cmd.ExecuteNonQuery();
-                con.Close();
+
+                MemberModel memberModel = new MemberModel(textBox1.Text, img_path, textBox3.Text, textBox4.Text);
+                memberModel.push();
+                
                 MessageBox.Show("Record Inserted Successfully");
             }
             catch (Exception ex)
@@ -64,18 +49,6 @@ namespace WindowsFormsApp1
                 MessageBox.Show(ex.Message.ToString());
                 throw;
             }
-
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Add_Members_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

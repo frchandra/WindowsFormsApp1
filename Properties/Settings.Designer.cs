@@ -26,11 +26,10 @@ namespace WindowsFormsApp1.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\RentCar.accdb;Presi" +
-            "st Security Info=True")]
-        public string ConnString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\RentCar.accdb")]
+        public string Setting {
             get {
-                return ((string)(this["ConnString"]));
+                return ((string)(this["Setting"]));
             }
         }
     }
