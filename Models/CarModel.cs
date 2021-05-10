@@ -69,6 +69,11 @@ namespace WindowsFormsApp1.Models
             this.id = id;
         }
 
+        public CarModel()
+        {
+
+        }
+
 
         public void push()
         {
@@ -101,6 +106,29 @@ namespace WindowsFormsApp1.Models
             con.Close();
         }
 
+        public void pullById(int id)
+        {
+            con.Open();
+            OleDbCommand cmd = new OleDbCommand("select * from Cars_Info where id=" + id + "", con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+            DataTable dataTable = new DataTable();
+            OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
+            dataAdapter.Fill(dataTable);
+
+            foreach (DataRow dataRow in dataTable.Rows)
+            {
+                this.id = Convert.ToInt32(dataRow["ID"]);
+                this.brand = dataRow["Brand"].ToString();
+                this.model = dataRow["Model"].ToString();
+                this.transmision = dataRow["Transmision"].ToString();
+                this.max_Passenger = Convert.ToInt32(dataRow["Max_Passenger"].ToString());
+                this.price = Convert.ToInt32(dataRow["Price"].ToString());
+                this.quantity = Convert.ToInt32(dataRow["Quantity"].ToString());
+            }
+            con.Close();
+        }
+
         public void pullByBMT()
         {
             con.Open();
@@ -121,21 +149,38 @@ namespace WindowsFormsApp1.Models
                 price = Convert.ToInt32(dataRow["Price"].ToString());
                 quantity = Convert.ToInt32(dataRow["Quantity"].ToString());
                 available_Quantity = Convert.ToInt32(dataRow["available_Quantity"].ToString());
-            }
-            con.Close();
+            }            
         }
 
-
-
-        public OleDbCommand pullDistinct()
+        public DataTable getDataTable()
         {
             con.Open();
-            OleDbCommand cmd = new OleDbCommand("select distinct Brand  from Cars_Info where Brand like('%" + brand + "%')", con);
+            OleDbCommand cmd = new OleDbCommand("select ID, Brand, Model, Transmision, Max_Passenger, Price, Quantity, Available_Quantity from Cars_Info", con);
             cmd.ExecuteNonQuery();
             con.Close();
+            DataTable dataTable = new DataTable();
+            OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
+            dataAdapter.Fill(dataTable);
 
-            return cmd;
+            return dataTable;
         }
+
+
+
+        public DataTable getPrice()
+        {
+            con.Open();
+            OleDbCommand cmd = new OleDbCommand("select Price from Cars_info where Brand='" + brand + "' AND Model= '" + model + "' AND Transmision='" + transmision + "' ", con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+            DataTable dataTable = new DataTable();
+            OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
+            dataAdapter.Fill(dataTable);
+
+            return dataTable;
+        }
+
+
 
         public void update()
         {
@@ -145,30 +190,32 @@ namespace WindowsFormsApp1.Models
             con.Close();
         }
 
-        public void updateAvailableQty()
+        public void decrementAvailableQty()
         {
             con.Open();
             OleDbCommand cmd = new OleDbCommand("update Cars_Info set Available_Quantity=Available_Quantity-1 where Model='" + model + "' AND Transmision='" + transmision + "' ", con);
             cmd.ExecuteNonQuery();
             con.Close();
-
         }
 
-        public OleDbCommand search()
+        public void incrementAvailableQty(int id)
+        {
+            con.Open();
+            OleDbCommand cmd = new OleDbCommand("update Cars_Info set Available_Quantity=Available_Quantity+1 where ID=" + id + " ", con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+
+        public DataTable search()
         {
             con.Open();
             OleDbCommand cmd = new OleDbCommand("select * from Cars_Info where Brand like('%" + brand + "%') or Model like('%" + model + "%') ", con);
             cmd.ExecuteNonQuery();
             con.Close();
-            return cmd;
-
+            OleDbDataAdapter dataAdapter = new OleDbDataAdapter();
+            DataTable dataTable = new DataTable();
+            dataAdapter.Fill(dataTable);
+            return dataTable;
         }
-
-
-
-
-
-
-
     }
 }

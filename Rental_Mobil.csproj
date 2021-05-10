@@ -63,10 +63,10 @@
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MemberModel.cs" />
     <Compile Include="Models\Encryptor.cs" />
-    <Compile Include="Garage.cs">
+    <Compile Include="Forms\Garage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Garage.Designer.cs">
+    <Compile Include="Forms\Garage.Designer.cs">
       <DependentUpon>Garage.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Login.cs">
@@ -90,10 +90,10 @@
     <Compile Include="Forms\Rent_Car.Designer.cs">
       <DependentUpon>Rent_Car.cs</DependentUpon>
     </Compile>
-    <Compile Include="Return_Car.cs">
+    <Compile Include="Forms\Return_Car.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Return_Car.Designer.cs">
+    <Compile Include="Forms\Return_Car.Designer.cs">
       <DependentUpon>Return_Car.cs</DependentUpon>
     </Compile>
     <Compile Include="System\Configuration\ConfigurationManager.cs" />
@@ -115,7 +115,7 @@
     <EmbeddedResource Include="Forms\Add_Members.resx">
       <DependentUpon>Add_Members.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Garage.resx">
+    <EmbeddedResource Include="Forms\Garage.resx">
       <DependentUpon>Garage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Login.resx">
@@ -136,7 +136,7 @@
     <EmbeddedResource Include="Forms\Rent_Car.resx">
       <DependentUpon>Rent_Car.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Return_Car.resx">
+    <EmbeddedResource Include="Forms\Return_Car.resx">
       <DependentUpon>Return_Car.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\View_Cars.resx">

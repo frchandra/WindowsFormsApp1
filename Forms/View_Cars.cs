@@ -27,9 +27,10 @@ namespace WindowsFormsApp1
             try
             {
                 CarModel carModel = new CarModel(textBox1.Text, textBox1.Text);
-                OleDbDataAdapter dataAdapter = new OleDbDataAdapter(carModel.search());
-                DataTable dataTable = new DataTable();               
-                dataAdapter.Fill(dataTable);
+                //OleDbDataAdapter dataAdapter = new OleDbDataAdapter(carModel.search());
+                DataTable dataTable = carModel.search();              
+                //dataAdapter.Fill(dataTable);
+
                 i = Convert.ToInt32(dataTable.Rows.Count.ToString());
                 dataGridView1.DataSource = dataTable;          
 
@@ -90,14 +91,19 @@ namespace WindowsFormsApp1
         {
             try
             {
-                con.Open();
-                OleDbCommand cmd = con.CreateCommand();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "select * from Cars_Info";
-                cmd.ExecuteNonQuery();
-                DataTable dataTable = new DataTable();
-                OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
-                dataAdapter.Fill(dataTable);
+                //con.Open();
+                //OleDbCommand cmd = con.CreateCommand();
+                //cmd.CommandType = CommandType.Text;
+                //cmd.CommandText = "select * from Cars_Info";
+                //cmd.ExecuteNonQuery();
+                CarModel carModel = new CarModel();
+
+
+
+                DataTable dataTable = carModel.getDataTable();
+                //OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
+                //dataAdapter.Fill(dataTable);
+
                 dataGridView1.DataSource = dataTable;
 
 

@@ -21,17 +21,6 @@ namespace WindowsFormsApp1
 
             MemberModel memberModel = new MemberModel();
             i = memberModel.searchByName(Name1.Text);
-
-
-            //OleDbCommand cmd = con.CreateCommand();
-            //cmd.CommandType = CommandType.Text;
-            //cmd.CommandText = "select Name, Email, Contact from Members_Info where Name='"+ Name1.Text +"' ";
-            //cmd.ExecuteNonQuery();
-
-            //DataTable dataTable = new DataTable();
-            //OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
-            //dataAdapter.Fill(dataTable);
-            //i = Convert.ToInt32(dataTable.Rows.Count.ToString());
             
             if (i == 0)
             {
@@ -42,24 +31,13 @@ namespace WindowsFormsApp1
                 Name2.Text = memberModel.Name;
                 Email.Text = memberModel.Email;
                 Contact.Text = memberModel.Contact;
-
-                //foreach ( DataRow dataRow in dataTable.Rows)
-                //{
-                //    Name2.Text = dataRow["Name"].ToString();
-                //    Email.Text = dataRow["Email"].ToString();
-                //    Contact.Text = dataRow["Contact"].ToString();
-                //}
             }
-
-
         }
 
         private void Rent_Car_Load(object sender, EventArgs e)
         {
-            if (con.State == ConnectionState.Open)
-            {
-                con.Close();
-            }
+            if (con.State == ConnectionState.Open)           
+                con.Close();          
             con.Open();
         }
 
@@ -88,7 +66,6 @@ namespace WindowsFormsApp1
                         listBox1.Items.Add(dataRow["Brand"].ToString());
                     }
                 }
-
             }
         }
 
@@ -123,63 +100,21 @@ namespace WindowsFormsApp1
             int member_ID = 0;
             CarModel carModel = new CarModel(Brand.Text, Model.Text, Transmision.Text);
             MemberModel memberModel = new MemberModel(Name2.Text, Email.Text, Contact.Text);
-            
-            
+                        
             carModel.pullByBMT();
             car_availableQty = carModel.Available_Quantity;
             car_ID = carModel.Id;
 
-            //OleDbCommand cmd = con.CreateCommand();
-            //cmd.CommandType = CommandType.Text;                      
-            //cmd.CommandText = "select * from Cars_Info where Brand='"+ Brand.Text +"' AND Model='"+ Model.Text +"' AND Transmision='"+ Transmision.Text +"'  ";
-            //cmd.ExecuteNonQuery();
-
-            //DataTable dataTable = new DataTable();
-            //OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
-            //dataAdapter.Fill(dataTable);
-
-            //foreach(DataRow dataRow in dataTable.Rows)
-            //{
-            //    car_Quantity = Convert.ToInt32(dataRow["Available_Quantity"]) ;
-            //    car_ID = Convert.ToInt32(dataRow["ID"]);
-
-            //}
-
-
-
             memberModel.pullByNEC();
             member_ID = memberModel.Id;
-            //cmd.CommandText = "select * from Members_Info where Name='" + Name2.Text + "' AND Email='" + Email.Text + "' AND Contact='" + Contact.Text +"' ";
-            //cmd.ExecuteNonQuery();
 
-            //dataTable = new DataTable();
-            //dataAdapter = new OleDbDataAdapter(cmd);
-            //dataAdapter.Fill(dataTable);
-
-            //foreach (DataRow dataRow in dataTable.Rows)
-            //{
-            //    member_ID = Convert.ToInt32(dataRow["ID"]);
-
-            //}
 
 
             if (car_availableQty > 0)
             {
                 RentCarModel rentCarModel = new RentCarModel(member_ID, car_ID, dateTimePicker1.Value.ToString(), dateTimePicker2.Value.ToString(), Label_Total_Price.Text, false);
                 rentCarModel.push();
-                carModel.updateAvailableQty();
-
-                //cmd.CommandText = "insert into Rent_Car (Car_ID, Member_ID) values('"+ Name2.Text +"','"+ Email.Text +"','"+ Contact.Text +"','"+ Brand.Text +"','"+ Model.Text +"','"+ Transmision.Text + "','" + Label_PricePerDay.Text + "','" + dateTimePicker1.Value.ToString() + "','" + dateTimePicker2.Value.ToString()+ "','" + Label_Total_Price.Text + "', "+ 0 +" )";
-                //cmd.ExecuteNonQuery();
-
-
-
-                //OleDbCommand cmd1 = con.CreateCommand();
-                //cmd1.CommandType = CommandType.Text;
-                //cmd1.CommandText = "update Cars_Info set Available_Quantity=Available_Quantity-1 where Model='" + Model.Text + "' AND Transmision='" + Transmision.Text + "' ";
-                //cmd1.ExecuteNonQuery();
-
-
+                carModel.decrementAvailableQty();
                 MessageBox.Show("Data Added Successfully");
             }
             else
@@ -268,7 +203,6 @@ namespace WindowsFormsApp1
                         listBox3.Items.Add(dataRow["Transmision"].ToString());
                     }
                 }
-
             }
         }
 
@@ -293,39 +227,25 @@ namespace WindowsFormsApp1
         private void listBox3_MouseClick(object sender, MouseEventArgs e)
         {
             Transmision.Text = listBox3.SelectedItem.ToString();
-            listBox3.Visible = false;
-
-            
-           
+            listBox3.Visible = false;          
         }
 
 
         private void button3_Click(object sender, EventArgs e)//calcuate price
         {
-
-
-            OleDbCommand cmd = con.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select Price from Cars_info where Brand='" + Brand.Text + "' AND Model= '"+ Model.Text +"' AND Transmision='"+ Transmision.Text +"' ";
-            cmd.ExecuteNonQuery();
-            DataTable dataTable = new DataTable();
-            OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
-            dataAdapter.Fill(dataTable);
+            CarModel carModel = new CarModel(Brand.Text, Model.Text, Transmision.Text);
+            DataTable dataTable = carModel.getPrice();
 
             DateTime date1 = dateTimePicker1.Value;
             DateTime date2 = dateTimePicker2.Value;
             TimeSpan timeSpan = date2 - date1;
 
-
             foreach (DataRow dataRow in dataTable.Rows)
             {
                 Label_PricePerDay.Text = dataRow["Price"].ToString();
                 double totalPrice = Math.Ceiling(timeSpan.TotalDays) * Convert.ToInt32(dataRow["Price"]);
-
                 Label_Total_Price.Text = totalPrice.ToString();
-               
             }
-           
         }
     }
 }

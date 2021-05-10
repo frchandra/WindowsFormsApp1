@@ -146,6 +146,23 @@ namespace WindowsFormsApp1.Models
             con.Close();
         }
 
+        public int getIdbyName(string name)
+        {
+            con.Open();
+            OleDbCommand cmd = new OleDbCommand("select * from Members_Info where Name = '" + name + "' ", con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+            DataTable dataTable = new DataTable();
+            OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
+            dataAdapter.Fill(dataTable);
+
+            foreach (DataRow dataRow in dataTable.Rows)
+            {
+                id = Convert.ToInt32(dataRow["ID"]);
+            }
+            return id;
+        }
 
         public OleDbCommand getCmd(string def = "select * from Members_Info")
         {

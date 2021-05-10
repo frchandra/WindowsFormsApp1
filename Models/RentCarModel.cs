@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Data;
 using System.Data.OleDb;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace WindowsFormsApp1.Models
 {
@@ -37,6 +35,10 @@ namespace WindowsFormsApp1.Models
             this.is_Returned = is_Returned;
         }
 
+        public RentCarModel()
+        {
+        }
+
         public void push()
         {
             con.Open();
@@ -45,6 +47,62 @@ namespace WindowsFormsApp1.Models
             con.Close();
         }
 
+        public DataTable getNotReturnded(int id)
+        {
+            con.Open();
+            OleDbCommand cmd = new OleDbCommand("select * from Rent_Car where CarID=" + id + "  AND Is_Returned = 0 ", con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+            DataTable dataTable = new DataTable();
+            OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
+            dataAdapter.Fill(dataTable);
+            return dataTable;
+        }
 
+        public void getRentDateById(int id)
+        {
+            con.Open();
+            OleDbCommand cmd = new OleDbCommand("select * from Rent_Car where CarID=" + id + "  AND Is_Returned = 0 ", con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+            DataTable dataTable = new DataTable();
+            OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
+            dataAdapter.Fill(dataTable);            
+            foreach (DataRow dataRow in dataTable.Rows)
+            {
+                rent_Date = Convert.ToString(dataRow["Rent_Date"]);
+            }            
+        }
+
+        public void pullById(int id)
+        {
+            con.Open();
+            OleDbCommand cmd = new OleDbCommand("select * from Rent_Car where id=" + id + "", con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+            DataTable dataTable = new DataTable();
+            OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
+            dataAdapter.Fill(dataTable);
+
+            foreach (DataRow dataRow in dataTable.Rows)
+            {
+                this.id = Convert.ToInt32(dataRow["ID"]);
+                this.member_Id = Convert.ToInt32(dataRow["MemberID"]);
+                this.car_Id = Convert.ToInt32(dataRow["CarID"]);
+                this.rent_Date = Convert.ToString(dataRow["rent_Date"]);
+                this.return_Date = Convert.ToString(dataRow["return_Date"]);
+                this.total_Price = Convert.ToString(dataRow["Total_Price"]);
+                this.is_Returned = Convert.ToBoolean(dataRow["is_Returned"]);
+            }
+            con.Close();
+        }
+
+        public void update(int i, string date)
+        {
+            con.Open();
+            OleDbCommand cmd = new OleDbCommand("update Rent_Car set Return_Date='" + date + "', Is_Returned=" + 1 + " where id=" + i + " ", con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
     }
 }
