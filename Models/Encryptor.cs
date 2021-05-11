@@ -1,16 +1,9 @@
 using System;
-using System.Data;
-using System.Configuration;
-using System.Web;
 
 
-/// <summary>
-/// Summary description for Pass
-/// </summary>
-public static class Pass
+public static class Encryptor
 {
-	
-        public static string GetRandomPassword(int length)
+    public static string GetRandomPassword(int length)
     {
     char[] chars = "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
     string password = string.Empty;
