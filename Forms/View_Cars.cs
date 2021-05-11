@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
-using System.Data.OleDb;
+//using System.Data.OleDb;
 using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1
@@ -9,7 +9,7 @@ namespace WindowsFormsApp1
    
     public partial class View_Cars : Form
     {
-        OleDbConnection con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\RentCar.accdb");
+        //OleDbConnection con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\RentCar.accdb");
 
         public View_Cars()
         {
@@ -70,7 +70,7 @@ namespace WindowsFormsApp1
             try
             {
                 CarModel carModel = new CarModel(i);
-                carModel.pullByBMT();
+                carModel.pullById(i);
 
                 Brand.Text = carModel.Brand;
                 Model.Text = carModel.Model;
@@ -107,7 +107,7 @@ namespace WindowsFormsApp1
                 dataGridView1.DataSource = dataTable;
 
 
-                con.Close();
+                //con.Close();
             }
             catch (Exception ex)
             {

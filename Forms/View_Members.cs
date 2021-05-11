@@ -3,7 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
-using System.Data.OleDb;
+//using System.Data.OleDb;
 using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1
@@ -30,10 +30,8 @@ namespace WindowsFormsApp1
             dataGridView1.Refresh();
             int i = 0;
 
-            MemberModel memberModel = new MemberModel();              
-            DataTable dataTable = new DataTable();
-            OleDbDataAdapter dataAdapter = new OleDbDataAdapter(memberModel.getCmd(def));
-            dataAdapter.Fill(dataTable);
+            MemberModel memberModel = new MemberModel();
+            DataTable dataTable = memberModel.getCmd(def);
             dataGridView1.DataSource = dataTable;
 
             Bitmap img;
@@ -97,6 +95,13 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Record Updated Successfully");
             }
             else if(result == DialogResult.Cancel)
+            {
+                MemberModel memberModel = new MemberModel(i, Name.Text, Email.Text, Contact.Text);
+                memberModel.update();
+                fillGrid();
+                MessageBox.Show("Record Updated Successfully");
+            }
+            else
             {
                 MemberModel memberModel = new MemberModel(i, Name.Text, Email.Text, Contact.Text);
                 memberModel.update();

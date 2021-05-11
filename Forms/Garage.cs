@@ -5,7 +5,7 @@ using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1
 {
-    public partial class Garage : Form, Interface1
+    public partial class Garage : Form
     {        
         public Garage()
         {
@@ -31,12 +31,11 @@ namespace WindowsFormsApp1
             dataGridView2.DataSource = dataTable;
         }
 
-        private void textBox1_KeyUp(object sender, KeyEventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             CarModel carModel = new CarModel(textBox1.Text, textBox1.Text);
             DataTable dataTable = carModel.search();
             dataGridView1.DataSource = dataTable; 
         }
-
     }
 }

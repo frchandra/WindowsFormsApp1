@@ -1,21 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace WindowsFormsApp1.Models
 {
-    class MemberModel
+    class MemberModel : MyModel
     {
         private int id;
         private string name;
         private string img_Path;
         private string email;
         private string contact;
-        OleDbConnection con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\RentCar.accdb");
+        //OleDbConnection con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\RentCar.accdb");
 
         public int Id { get => id; }
         public string Name { get => name; }
@@ -58,7 +55,7 @@ namespace WindowsFormsApp1.Models
         }
 
 
-        public void pullById()
+        public override void pullById()
         {
             con.Open();
             OleDbCommand cmd = new OleDbCommand("select * from Members_Info where id = "+ id +" ", con);
@@ -98,6 +95,13 @@ namespace WindowsFormsApp1.Models
             }
         }
 
+        public override void push()
+        {
+            con.Open();
+            OleDbCommand cmd = new OleDbCommand("insert into Members_Info(Name, ID_Card, Email, Contact) values('" + name + "', '" + img_Path + "', '" + email + "', '" + contact + "')", con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
 
 
         public int searchByName(string name)
@@ -121,15 +125,6 @@ namespace WindowsFormsApp1.Models
             return i;
         }
 
-        public void push()
-        {
-            con.Open();
-            OleDbCommand cmd = new OleDbCommand( "insert into Members_Info(Name, ID_Card, Email, Contact) values('"+ name +"', '"+ img_Path +"', '"+ email + "', '"+ contact +"')", con);
-            cmd.ExecuteNonQuery();
-            con.Close();
-        }
-
-
         public void update(string img_Path)
         {
             con.Open();
@@ -138,7 +133,7 @@ namespace WindowsFormsApp1.Models
             con.Close();
         }
 
-        public void update()
+        public override void update()
         {
             con.Open();
             OleDbCommand cmd = new OleDbCommand("update Members_Info set Name='" + name + "', Email='" + email + "', Contact='" + contact + "' where id=" + id + " ", con);
@@ -164,13 +159,16 @@ namespace WindowsFormsApp1.Models
             return id;
         }
 
-        public OleDbCommand getCmd(string def = "select * from Members_Info")
+        public DataTable getCmd(string def = "select * from Members_Info")
         {
             con.Open();
             OleDbCommand cmd = new OleDbCommand(def, con);
             cmd.ExecuteNonQuery();
             con.Close();
-            return cmd;
+            DataTable dataTable = new DataTable();
+            OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
+            dataAdapter.Fill(dataTable);
+            return dataTable;            
         }
     }
 }

@@ -64,7 +64,6 @@ namespace WindowsFormsApp1
             this.dataGridView1.Size = new System.Drawing.Size(1049, 336);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            
             // 
             // panel1
             // 
@@ -79,7 +78,7 @@ namespace WindowsFormsApp1
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(38, 145);
+            this.button1.Location = new System.Drawing.Point(38, 113);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(83, 32);
             this.button1.TabIndex = 2;
@@ -104,7 +103,6 @@ namespace WindowsFormsApp1
             this.label1.Size = new System.Drawing.Size(151, 31);
             this.label1.TabIndex = 0;
             this.label1.Text = "Search Car";
-           
             // 
             // panel2
             // 
@@ -126,7 +124,6 @@ namespace WindowsFormsApp1
             this.panel2.Size = new System.Drawing.Size(1049, 374);
             this.panel2.TabIndex = 2;
             this.panel2.Visible = false;
-            
             // 
             // button2
             // 
@@ -162,7 +159,6 @@ namespace WindowsFormsApp1
             this.Max_Passenger.Name = "Max_Passenger";
             this.Max_Passenger.Size = new System.Drawing.Size(292, 38);
             this.Max_Passenger.TabIndex = 10;
-            
             // 
             // Transmision
             // 
@@ -197,7 +193,6 @@ namespace WindowsFormsApp1
             this.label7.Size = new System.Drawing.Size(194, 31);
             this.label7.TabIndex = 6;
             this.label7.Text = "Available Units";
-            
             // 
             // label6
             // 
@@ -248,7 +243,6 @@ namespace WindowsFormsApp1
             this.label2.Size = new System.Drawing.Size(86, 31);
             this.label2.TabIndex = 1;
             this.label2.Text = "Brand";
-            
             // 
             // View_Cars
             // 

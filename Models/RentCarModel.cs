@@ -5,7 +5,7 @@ using System.Data.OleDb;
 
 namespace WindowsFormsApp1.Models
 {
-    class RentCarModel
+    class RentCarModel : MyModel
     {
         private int id;
         private int member_Id;
@@ -14,7 +14,7 @@ namespace WindowsFormsApp1.Models
         private string return_Date;
         private string total_Price;
         private bool is_Returned;
-        private OleDbConnection con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\RentCar.accdb");
+        //private OleDbConnection con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\RentCar.accdb");
 
         public int Id { get => id; }
         public int Member_Id { get => member_Id; }
@@ -37,15 +37,7 @@ namespace WindowsFormsApp1.Models
 
         public RentCarModel()
         {
-        }
-
-        public void push()
-        {
-            con.Open();
-            OleDbCommand cmd = new OleDbCommand(" INSERT INTO Rent_Car (MemberID, CarID, Rent_Date, Return_Date, Total_Price, Is_Returned) VALUES ('" + member_Id + "', '" + car_Id + "', '" + rent_Date + "', '" + return_Date + "', '" + total_Price + "', '" + Convert.ToByte(is_Returned) + "') ", con);
-            cmd.ExecuteNonQuery();
-            con.Close();
-        }
+        }       
 
         public DataTable getNotReturnded(int id)
         {
@@ -72,6 +64,14 @@ namespace WindowsFormsApp1.Models
             {
                 rent_Date = Convert.ToString(dataRow["Rent_Date"]);
             }            
+        }
+
+        public override void push()
+        {
+            con.Open();
+            OleDbCommand cmd = new OleDbCommand(" INSERT INTO Rent_Car (MemberID, CarID, Rent_Date, Return_Date, Total_Price, Is_Returned) VALUES ('" + member_Id + "', '" + car_Id + "', '" + rent_Date + "', '" + return_Date + "', '" + total_Price + "', '" + Convert.ToByte(is_Returned) + "') ", con);
+            cmd.ExecuteNonQuery();
+            con.Close();
         }
 
         public void pullById(int id)

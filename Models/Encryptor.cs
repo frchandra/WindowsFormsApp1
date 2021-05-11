@@ -1,12 +1,6 @@
 using System;
-using System.Data;
-using System.Configuration;
-using System.Web;
 
 
-/// <summary>
-/// Summary description for Pass
-/// </summary>
 public static class Encryptor
 {
     public static string GetRandomPassword(int length)

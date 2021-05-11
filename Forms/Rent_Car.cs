@@ -120,10 +120,7 @@ namespace WindowsFormsApp1
             else
             {
                 MessageBox.Show("Car Are Not Available for Now");
-            }
-
-
-           
+            }          
         }
 
 
