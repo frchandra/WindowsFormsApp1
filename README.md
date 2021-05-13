@@ -5,7 +5,7 @@
 
 <hr/> 
  
-  Rent A Car merupakan aplikasi managemen bisnis rental mobil sederhanana berbasis Windows Form.<br/>
+  Rent A Car merupakan aplikasi managemen rental mobil sederhanana berbasis Windows Form.<br/>
   Untuk mencoba menjalankan aplikasi ini, caranya adalah mengcopy folder "Debug" (bin/Debug)<br/>
   lalu menjalankan aplikasi "WindowsFormApp1.exe".<br/><br/>
 
