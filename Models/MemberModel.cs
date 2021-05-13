@@ -141,6 +141,14 @@ namespace WindowsFormsApp1.Models
             con.Close();
         }
 
+        public void delete()
+        {
+            con.Open();
+            OleDbCommand cmd = new OleDbCommand("delete from Members_Info  where id=" + id + " ", con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+
         public int getIdbyName(string name)
         {
             con.Open();

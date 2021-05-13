@@ -61,7 +61,6 @@ namespace WindowsFormsApp1
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1062, 513);
             this.panel1.TabIndex = 0;
-            
             // 
             // pictureBox1
             // 
@@ -89,7 +88,7 @@ namespace WindowsFormsApp1
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(144, 39);
             this.button1.TabIndex = 8;
-            this.button1.Text = "button1";
+            this.button1.Text = "Browse";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -165,11 +164,11 @@ namespace WindowsFormsApp1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1120, 659);
             this.Controls.Add(this.panel1);
             this.Name = "Add_Members";
             this.Text = "Add_Memebers";
-            
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

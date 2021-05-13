@@ -89,5 +89,6 @@ namespace WindowsFormsApp1
 
             label6.Text = string.Concat(Convert.ToString(rentCarModel.Total_Price), " + ", fine.ToString());           
         }
+
     }
 }

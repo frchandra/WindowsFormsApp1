@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Forms;
 
 namespace WindowsFormsApp1
 {
@@ -16,7 +14,7 @@ namespace WindowsFormsApp1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            //Application.Run(new Login());
             //Application.Run(new View_Cars());
             //Application.Run(new Add_Cars());
             //Application.Run(new Add_Members()); 
@@ -24,6 +22,7 @@ namespace WindowsFormsApp1
             //Application.Run(new Rent_Car());
             //Application.Run(new Return_Car());
             //Application.Run(new Garage());
+            Application.Run(new Home());
         }
     }
 }

@@ -100,7 +100,7 @@ namespace WindowsFormsApp1
             // Label_Total_Price
             // 
             this.Label_Total_Price.AutoSize = true;
-            this.Label_Total_Price.Location = new System.Drawing.Point(975, 406);
+            this.Label_Total_Price.Location = new System.Drawing.Point(974, 413);
             this.Label_Total_Price.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label_Total_Price.Name = "Label_Total_Price";
             this.Label_Total_Price.Size = new System.Drawing.Size(0, 17);
@@ -109,7 +109,7 @@ namespace WindowsFormsApp1
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(881, 406);
+            this.label12.Location = new System.Drawing.Point(881, 413);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(76, 17);
@@ -135,7 +135,7 @@ namespace WindowsFormsApp1
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(977, 322);
+            this.button3.Location = new System.Drawing.Point(977, 330);
             this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(100, 47);
@@ -147,7 +147,7 @@ namespace WindowsFormsApp1
             // Label_PricePerDay
             // 
             this.Label_PricePerDay.AutoSize = true;
-            this.Label_PricePerDay.Location = new System.Drawing.Point(975, 375);
+            this.Label_PricePerDay.Location = new System.Drawing.Point(974, 382);
             this.Label_PricePerDay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label_PricePerDay.Name = "Label_PricePerDay";
             this.Label_PricePerDay.Size = new System.Drawing.Size(0, 17);
@@ -156,7 +156,7 @@ namespace WindowsFormsApp1
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(881, 375);
+            this.label9.Location = new System.Drawing.Point(881, 382);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(67, 17);
@@ -382,9 +382,11 @@ namespace WindowsFormsApp1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1540, 729);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MinimumSize = new System.Drawing.Size(1558, 776);
             this.Name = "Rent_Car";
             this.Text = "Rent_Car";
             this.Load += new System.EventHandler(this.Rent_Car_Load);

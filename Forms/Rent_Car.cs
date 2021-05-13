@@ -244,5 +244,6 @@ namespace WindowsFormsApp1
                 Label_Total_Price.Text = totalPrice.ToString();
             }
         }
+
     }
 }

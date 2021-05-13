@@ -48,6 +48,7 @@ namespace WindowsFormsApp1
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -55,13 +56,20 @@ namespace WindowsFormsApp1
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(483, 12);
+            this.dataGridView1.Location = new System.Drawing.Point(368, 12);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1049, 336);
+            this.dataGridView1.Size = new System.Drawing.Size(1157, 336);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -72,15 +80,15 @@ namespace WindowsFormsApp1
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(465, 336);
+            this.panel1.Size = new System.Drawing.Size(349, 336);
             this.panel1.TabIndex = 1;
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(38, 113);
+            this.button1.Location = new System.Drawing.Point(7, 78);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(83, 32);
+            this.button1.Size = new System.Drawing.Size(98, 32);
             this.button1.TabIndex = 2;
             this.button1.Text = "Search";
             this.button1.UseVisualStyleBackColor = true;
@@ -89,16 +97,16 @@ namespace WindowsFormsApp1
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(38, 36);
+            this.textBox1.Location = new System.Drawing.Point(7, 1);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(292, 38);
+            this.textBox1.Size = new System.Drawing.Size(330, 38);
             this.textBox1.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(35, 79);
+            this.label1.Location = new System.Drawing.Point(4, 44);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(151, 31);
             this.label1.TabIndex = 0;
@@ -106,6 +114,8 @@ namespace WindowsFormsApp1
             // 
             // panel2
             // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.Quantity);
             this.panel2.Controls.Add(this.Price);
@@ -119,9 +129,9 @@ namespace WindowsFormsApp1
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(483, 355);
+            this.panel2.Location = new System.Drawing.Point(368, 355);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1049, 374);
+            this.panel2.Size = new System.Drawing.Size(1157, 374);
             this.panel2.TabIndex = 2;
             this.panel2.Visible = false;
             // 
@@ -244,14 +254,27 @@ namespace WindowsFormsApp1
             this.label2.TabIndex = 1;
             this.label2.Text = "Brand";
             // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(398, 297);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(94, 32);
+            this.button3.TabIndex = 14;
+            this.button3.Text = "Delete";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // View_Cars
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1759, 751);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(1554, 751);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
+            this.MinimumSize = new System.Drawing.Size(1572, 798);
             this.Name = "View_Cars";
             this.Text = "View_Cars";
             this.Load += new System.EventHandler(this.View_Cars_Load);
@@ -285,5 +308,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TextBox Transmision;
         private System.Windows.Forms.TextBox Model;
         private System.Windows.Forms.TextBox Brand;
+        private System.Windows.Forms.Button button3;
     }
 }

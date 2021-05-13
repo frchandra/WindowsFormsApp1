@@ -116,5 +116,23 @@ namespace WindowsFormsApp1
             }
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int i = Convert.ToInt32(dataGridView1.SelectedCells[0].Value.ToString());
+            try
+            {
+                CarModel carModel = new CarModel(i);
+                carModel.delete();
+                displayCars();
+                MessageBox.Show("Record Updated");
+                panel2.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                throw;
+            }
+        }
     }
 }

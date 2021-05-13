@@ -95,7 +95,6 @@ namespace WindowsFormsApp1
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(206, 37);
             this.comboBox1.TabIndex = 6;
-            
             // 
             // label1
             // 
@@ -106,7 +105,6 @@ namespace WindowsFormsApp1
             this.label1.Size = new System.Drawing.Size(86, 31);
             this.label1.TabIndex = 7;
             this.label1.Text = "Brand";
-            
             // 
             // label2
             // 
@@ -157,7 +155,6 @@ namespace WindowsFormsApp1
             this.label6.Size = new System.Drawing.Size(116, 31);
             this.label6.TabIndex = 12;
             this.label6.Text = "Quantity";
-            
             // 
             // button1
             // 
@@ -174,6 +171,7 @@ namespace WindowsFormsApp1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label6);
@@ -188,9 +186,9 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
+            this.MinimumSize = new System.Drawing.Size(818, 497);
             this.Name = "Add_Cars";
             this.Text = "Add_Cars";
-            
             this.ResumeLayout(false);
             this.PerformLayout();
 

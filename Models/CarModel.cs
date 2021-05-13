@@ -187,6 +187,14 @@ namespace WindowsFormsApp1.Models
             con.Close();
         }
 
+        public void delete()
+        {
+            con.Open();
+            OleDbCommand cmd = new OleDbCommand("delete from Cars_Info  where id=" + id + " ", con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+
         public void decrementAvailableQty()
         {
             con.Open();

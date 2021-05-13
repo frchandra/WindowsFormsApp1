@@ -43,6 +43,7 @@ namespace WindowsFormsApp1
                 memberModel.push();
                 
                 MessageBox.Show("Record Inserted Successfully");
+                this.Close();
             }
             catch (Exception ex)
             {

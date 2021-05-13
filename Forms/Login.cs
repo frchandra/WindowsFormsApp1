@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using WindowsFormsApp1.Forms;
 using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1
@@ -24,8 +25,8 @@ namespace WindowsFormsApp1
             else
             {
                 this.Hide();
-                MDI_User mDI_User = new MDI_User();
-                mDI_User.Show();
+                Home home = new Home();
+                home.Show();
             }
         }
     }

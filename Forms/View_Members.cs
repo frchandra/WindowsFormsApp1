@@ -109,5 +109,22 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Record Updated Successfully");
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int i = Convert.ToInt32(dataGridView1.SelectedCells[0].Value.ToString());
+            try
+            {
+                MemberModel memberModel = new MemberModel(i);
+                memberModel.delete();
+                fillGrid();
+                MessageBox.Show("Record Updated Successfully");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+                throw;
+            }
+        }
     }
 }
