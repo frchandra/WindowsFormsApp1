@@ -6,8 +6,10 @@
 <hr/> 
  
   Rent A Car merupakan aplikasi managemen rental mobil sederhanana berbasis Windows Form.<br/>
-  Untuk mencoba menjalankan aplikasi ini, caranya adalah mengcopy folder "Debug" (bin/Debug)<br/>
-  lalu menjalankan aplikasi "WindowsFormApp1.exe".<br/><br/>
+  Untuk mencoba menjalankan aplikasi ini, caranya adalah mendownload repository ini, lalu<br/>
+  menjalankan aplikasi "WindowsFormApp1.exe" yang terdapat pada folder "/bin/Debug".<br/>
+  Username dan password default yang digunakan untuk mengakses aplikasi ini adalah<br/>
+  username : admin dan password : admin.<br/><br/>
 
   Karena aplikasi ini menggunakan database Microsoft Access, maka ada kemungkinan anda diminta untuk<br/>
   menginstal Microsoft Access Database Engine. Anda dapat menginstal sofware ini melalui<br/>
