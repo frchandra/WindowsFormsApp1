@@ -15,7 +15,7 @@ namespace WindowsFormsApp1.Models
         private int max_Passenger;
         private int quantity;
         private int available_Quantity;
-        //private OleDbConnection con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\RentCar.accdb");
+       
 
         public int Id { get { return id; } }
         public string Brand { get { return brand; } }

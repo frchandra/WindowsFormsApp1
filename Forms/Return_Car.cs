@@ -20,6 +20,7 @@ namespace WindowsFormsApp1
             memberModel = new MemberModel();
             carModel = new CarModel();
             rentCarModel = new RentCarModel();
+            dateTimePicker1.MinDate = DateTime.Today;
         }
 
         private void button1_Click(object sender, EventArgs e)

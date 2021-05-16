@@ -13,6 +13,8 @@ namespace WindowsFormsApp1
         public Rent_Car()
         {
             InitializeComponent();
+            dateTimePicker1.MinDate = DateTime.Today;
+            dateTimePicker2.MinDate = DateTime.Today;
         }
 
         private void button1_Click(object sender, EventArgs e)

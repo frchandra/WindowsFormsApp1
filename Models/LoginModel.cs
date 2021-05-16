@@ -6,15 +6,34 @@ namespace WindowsFormsApp1.Models
 {
     class LoginModel : MyModel
     {
+        private int id = 1;
         private string username;
         private string password;
-        //private OleDbConnection con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\RentCar.accdb");
+        private string email;
+      
+        public string Username { get => username; }
+        public string Password { get => password; }
+        public string Email { get => email; }
+
+        public LoginModel()
+        {
+
+        }
 
         public LoginModel(string username, string password)
         {
             this.username = username;
             this.password = password;
         }
+
+        public LoginModel(string username, string password, string email)
+        {
+            this.username = username;
+            this.password = password;
+            this.email = email;
+        }
+
+
 
         public DataTable getInfo()
         {
@@ -27,6 +46,34 @@ namespace WindowsFormsApp1.Models
             dataAdapter.Fill(dataTable);
 
             return dataTable;
+        }
+
+        public override void pullById()
+        {
+            con.Open();
+            OleDbCommand cmd = new OleDbCommand("select * from admin where id=" + 1 + "", con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+            DataTable dataTable = new DataTable();
+            OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
+            dataAdapter.Fill(dataTable);
+
+            foreach (DataRow dataRow in dataTable.Rows)
+            {
+                this.username = dataRow["Username"].ToString();
+                this.password = dataRow["Password"].ToString();
+                this.email = dataRow["Email"].ToString();
+
+            }
+            con.Close();
+        }
+
+        public override void update()
+        {
+            con.Open();
+            OleDbCommand cmd = new OleDbCommand("UPDATE admin SET admin.Username = '"+username+"', admin.Email = '"+email+"', admin.[Password] = '"+password+"' WHERE(((admin.ID) = 1));", con);
+            cmd.ExecuteNonQuery();
+            con.Close();
         }
     }
 }

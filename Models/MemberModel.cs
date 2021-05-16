@@ -12,7 +12,7 @@ namespace WindowsFormsApp1.Models
         private string img_Path;
         private string email;
         private string contact;
-        //OleDbConnection con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\RentCar.accdb");
+       
 
         public int Id { get => id; }
         public string Name { get => name; }

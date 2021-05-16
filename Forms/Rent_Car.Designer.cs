@@ -29,6 +29,7 @@ namespace WindowsFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Rent_Car));
             this.panel1 = new System.Windows.Forms.Panel();
             this.Label_Total_Price = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -385,6 +386,7 @@ namespace WindowsFormsApp1
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1540, 729);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MinimumSize = new System.Drawing.Size(1558, 776);
             this.Name = "Rent_Car";

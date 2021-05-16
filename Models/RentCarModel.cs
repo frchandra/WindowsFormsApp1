@@ -14,8 +14,7 @@ namespace WindowsFormsApp1.Models
         private string return_Date;
         private string total_Price;
         private bool is_Returned;
-        //private OleDbConnection con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\RentCar.accdb");
-
+     
         public int Id { get => id; }
         public int Member_Id { get => member_Id; }
         public int Car_Id { get => car_Id; }
