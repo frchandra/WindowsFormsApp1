@@ -122,7 +122,17 @@ namespace WindowsFormsApp1
             else
             {
                 MessageBox.Show("Car Are Not Available for Now");
-            }          
+            }
+
+            Name1.Text = "";
+            Name2.Text = "";
+            Contact.Text = "";
+            Email.Text = "";
+            Brand.Text = "";
+            Model.Text = "";
+            Transmision.Text = "";
+            Label_Total_Price.Text = "";
+            Label_PricePerDay.Text = "";
         }
 
 

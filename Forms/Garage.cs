@@ -1,7 +1,12 @@
 ﻿using System;
+using System.Collections.Specialized;
 using System.Data;
+using System.Net;
 using System.Windows.Forms;
 using WindowsFormsApp1.Models;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
+using System.Drawing;
 
 namespace WindowsFormsApp1
 {
@@ -21,6 +26,16 @@ namespace WindowsFormsApp1
         {
             CarModel carModel = new CarModel();
             dataGridView1.DataSource =  carModel.getDataTable();
+
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+                if (Convert.ToInt32(row.Cells[6].Value) > Convert.ToInt32(row.Cells[7].Value))
+                {
+                    row.DefaultCellStyle.BackColor = Color.Red;
+                }
+                else
+                {
+                    row.DefaultCellStyle.BackColor = Color.Green;
+                }
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -43,7 +58,8 @@ namespace WindowsFormsApp1
             int i = Convert.ToInt32(dataGridView2.SelectedCells[1].Value.ToString());
             MemberModel memberModel = new MemberModel(i);
             memberModel.pullById();
-            textBox2.Text = memberModel.Email;
+            textBox2.Text = memberModel.Contact;
+            label7.Text = memberModel.Name;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -58,6 +74,29 @@ namespace WindowsFormsApp1
             //mail.Priority = MailPriority.High;
             //smtp.Send(mail);
             //MessageBox.Show("Mail Has Been Sent");
+            try
+            {
+                string accountSid = Environment.GetEnvironmentVariable("TwilioSID");
+                string authToken = Environment.GetEnvironmentVariable("TwilioAuth");
+
+                TwilioClient.Init(accountSid, authToken);
+
+                var message = MessageResource.Create(
+                    body: textBox3.Text,
+                    from: new Twilio.Types.PhoneNumber("+15597853327"),
+                    to: new Twilio.Types.PhoneNumber(textBox2.Text)
+                );
+
+                MessageBox.Show(message.Sid);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+                //throw;
+            }
+
+
+
         }
     }
 }
