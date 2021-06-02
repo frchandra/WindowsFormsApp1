@@ -22,10 +22,10 @@ namespace WindowsFormsApp1.Forms
         private void Admin_Load(object sender, EventArgs e)
         {
             LoginModel loginModel = new LoginModel();
-            loginModel.pullById();
-            label4.Text = loginModel.Username;
-            label5.Text = loginModel.Password;
-            label6.Text = loginModel.Email;           
+            loginModel.pullById(1);
+            textBox1.Text = loginModel.Username;
+            textBox2.Text = loginModel.Password;
+            textBox3.Text = loginModel.Email;           
         }
     }
 }

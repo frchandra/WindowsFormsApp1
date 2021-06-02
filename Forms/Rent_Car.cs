@@ -100,14 +100,14 @@ namespace WindowsFormsApp1
             int car_availableQty = 0;
             int car_ID = 0; 
             int member_ID = 0;
-            CarModel carModel = new CarModel(Brand.Text, Model.Text, Transmision.Text);
-            MemberModel memberModel = new MemberModel(Name2.Text, Email.Text, Contact.Text);
+            CarModel carModel = new CarModel();
+            MemberModel memberModel = new MemberModel();
                         
-            carModel.pullByBMT();
+            carModel.pullByBMT(Brand.Text, Model.Text, Transmision.Text);
             car_availableQty = carModel.Available_Quantity;
             car_ID = carModel.Id;
 
-            memberModel.pullByNEC();
+            memberModel.pullByNEC(Name2.Text, Email.Text, Contact.Text);
             member_ID = memberModel.Id;
 
 
@@ -116,7 +116,7 @@ namespace WindowsFormsApp1
             {
                 RentCarModel rentCarModel = new RentCarModel(member_ID, car_ID, dateTimePicker1.Value.ToString(), dateTimePicker2.Value.ToString(), Label_Total_Price.Text, false);
                 rentCarModel.push();
-                carModel.decrementAvailableQty();
+                carModel.decrementAvailableQty(carModel.Id);
                 MessageBox.Show("Data Added Successfully");
             }
             else
@@ -242,19 +242,24 @@ namespace WindowsFormsApp1
 
         private void button3_Click(object sender, EventArgs e)//calcuate price
         {
-            CarModel carModel = new CarModel(Brand.Text, Model.Text, Transmision.Text);
-            DataTable dataTable = carModel.getPrice();
+            CarModel carModel = new CarModel();
+            //DataTable dataTable = carModel.getPrice();///
+            carModel.pullByBMT(Brand.Text, Model.Text, Transmision.Text);
 
             DateTime date1 = dateTimePicker1.Value;
             DateTime date2 = dateTimePicker2.Value;
             TimeSpan timeSpan = date2 - date1;
 
-            foreach (DataRow dataRow in dataTable.Rows)
-            {
-                Label_PricePerDay.Text = dataRow["Price"].ToString();
-                double totalPrice = Math.Ceiling(timeSpan.TotalDays) * Convert.ToInt32(dataRow["Price"]);
-                Label_Total_Price.Text = totalPrice.ToString();
-            }
+            //foreach (DataRow dataRow in dataTable.Rows)
+            //{
+            //    Label_PricePerDay.Text = dataRow["Price"].ToString();
+            //    double totalPrice = Math.Ceiling(timeSpan.TotalDays) * Convert.ToInt32(dataRow["Price"]);
+            //    Label_Total_Price.Text = totalPrice.ToString();
+            //}
+
+            Label_PricePerDay.Text = carModel.Price.ToString();
+            double totalPrice = Math.Ceiling(timeSpan.TotalDays) * Convert.ToInt32(carModel.Price);
+            Label_Total_Price.Text = totalPrice.ToString();
         }
 
     }

@@ -42,22 +42,22 @@ namespace WindowsFormsApp1
         {
             int i = Convert.ToInt32(dataGridView1.SelectedCells[0].Value.ToString());
             RentCarModel rentCarModel = new RentCarModel();
-            DataTable dataTable = rentCarModel.getNotReturnded(i);
+            DataTable dataTable = rentCarModel.getNotReturndedByCarId(i);
             dataGridView2.DataSource = dataTable;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            CarModel carModel = new CarModel(textBox1.Text, textBox1.Text);
-            DataTable dataTable = carModel.search();
+            CarModel carModel = new CarModel();
+            DataTable dataTable = carModel.searchNameOrBrand(textBox1.Text, textBox1.Text);
             dataGridView1.DataSource = dataTable; 
         }
 
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int i = Convert.ToInt32(dataGridView2.SelectedCells[1].Value.ToString());
-            MemberModel memberModel = new MemberModel(i);
-            memberModel.pullById();
+            MemberModel memberModel = new MemberModel();
+            memberModel.pullById(i);
             textBox2.Text = memberModel.Contact;
             label7.Text = memberModel.Name;
         }

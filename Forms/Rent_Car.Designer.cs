@@ -1,4 +1,6 @@
 ﻿
+using System.Diagnostics.CodeAnalysis;
+
 namespace WindowsFormsApp1
 {
     partial class Rent_Car
@@ -12,6 +14,9 @@ namespace WindowsFormsApp1
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// 
+
+        
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -27,6 +32,9 @@ namespace WindowsFormsApp1
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
+        /// 
+
+        
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Rent_Car));

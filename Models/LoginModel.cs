@@ -6,7 +6,7 @@ namespace WindowsFormsApp1.Models
 {
     class LoginModel : MyModel
     {
-        private int id = 1;
+       
         private string username;
         private string password;
         private string email;
@@ -48,10 +48,10 @@ namespace WindowsFormsApp1.Models
             return dataTable;
         }
 
-        public override void pullById()
+        public override void pullById(int id)
         {
             con.Open();
-            OleDbCommand cmd = new OleDbCommand("select * from admin where id=" + 1 + "", con);
+            OleDbCommand cmd = new OleDbCommand("select * from admin where id=" + id + "", con);
             cmd.ExecuteNonQuery();
             con.Close();
             DataTable dataTable = new DataTable();

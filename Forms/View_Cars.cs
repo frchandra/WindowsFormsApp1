@@ -26,8 +26,8 @@ namespace WindowsFormsApp1
             int i = 0;
             try
             {
-                CarModel carModel = new CarModel(textBox1.Text, textBox1.Text);                
-                DataTable dataTable = carModel.search();              
+                CarModel carModel = new CarModel();                
+                DataTable dataTable = carModel.searchNameOrBrand(textBox1.Text, textBox1.Text);              
                 
 
                 i = Convert.ToInt32(dataTable.Rows.Count.ToString());
@@ -68,7 +68,7 @@ namespace WindowsFormsApp1
             int i = Convert.ToInt32(dataGridView1.SelectedCells[0].Value.ToString());
             try
             {
-                CarModel carModel = new CarModel(i);
+                CarModel carModel = new CarModel();
                 carModel.pullById(i);
 
                 Brand.Text = carModel.Brand;
@@ -108,8 +108,8 @@ namespace WindowsFormsApp1
             int i = Convert.ToInt32(dataGridView1.SelectedCells[0].Value.ToString());
             try
             {
-                CarModel carModel = new CarModel(i);
-                carModel.delete();
+                CarModel carModel = new CarModel();
+                carModel.deleteById(i);
                 displayCars();
                 MessageBox.Show("Record Updated");
                 panel2.Visible = false;

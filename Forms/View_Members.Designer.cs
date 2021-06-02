@@ -238,7 +238,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox Contact;
         private System.Windows.Forms.TextBox Email;
-        private System.Windows.Forms.TextBox Name;
+        private new System.Windows.Forms.TextBox Name; //private System.Windows.Forms.TextBox Name;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;

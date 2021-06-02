@@ -15,13 +15,11 @@ namespace WindowsFormsApp1.Models
         private string total_Price;
         private bool is_Returned;
      
-        public int Id { get => id; }
-        public int Member_Id { get => member_Id; }
-        public int Car_Id { get => car_Id; }
+
         public string Rent_Date { get => rent_Date; }
         public string Return_Date { get => return_Date; }
         public string Total_Price { get => total_Price; }
-        public bool Is_Returned { get => is_Returned; }
+    
 
 
         public RentCarModel(int member_Id, int car_Id, string rent_Date, string return_Date, string total_Price, bool is_Returned)
@@ -38,10 +36,22 @@ namespace WindowsFormsApp1.Models
         {
         }       
 
-        public DataTable getNotReturnded(int id)
+        public DataTable getNotReturndedByCarId(int id)
         {
             con.Open();
             OleDbCommand cmd = new OleDbCommand("select * from Rent_Car where CarID=" + id + "  AND Is_Returned = 0 ", con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+            DataTable dataTable = new DataTable();
+            OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
+            dataAdapter.Fill(dataTable);           
+            return dataTable;
+        }
+
+        public DataTable getNotReturndedByMemberId(int id)
+        {
+            con.Open();
+            OleDbCommand cmd = new OleDbCommand("select * from Rent_Car where MemberID=" + id + "  AND Is_Returned = 0 ", con);
             cmd.ExecuteNonQuery();
             con.Close();
             DataTable dataTable = new DataTable();
@@ -50,20 +60,20 @@ namespace WindowsFormsApp1.Models
             return dataTable;
         }
 
-        public void getRentDateById(int id)
-        {
-            con.Open();
-            OleDbCommand cmd = new OleDbCommand("select * from Rent_Car where CarID=" + id + "  AND Is_Returned = 0 ", con);
-            cmd.ExecuteNonQuery();
-            con.Close();
-            DataTable dataTable = new DataTable();
-            OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
-            dataAdapter.Fill(dataTable);            
-            foreach (DataRow dataRow in dataTable.Rows)
-            {
-                rent_Date = Convert.ToString(dataRow["Rent_Date"]);
-            }            
-        }
+        //public void getRentDateById(int id)
+        //{
+        //    con.Open();
+        //    OleDbCommand cmd = new OleDbCommand("select * from Rent_Car where CarID=" + id + "  AND Is_Returned = 0 ", con);
+        //    cmd.ExecuteNonQuery();
+        //    con.Close();
+        //    DataTable dataTable = new DataTable();
+        //    OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
+        //    dataAdapter.Fill(dataTable);            
+        //    foreach (DataRow dataRow in dataTable.Rows)
+        //    {
+        //        rent_Date = Convert.ToString(dataRow["Rent_Date"]);
+        //    }            
+        //}
 
         public override void push()
         {
@@ -73,7 +83,7 @@ namespace WindowsFormsApp1.Models
             con.Close();
         }
 
-        public void pullById(int id)
+        public override void pullById(int id)
         {
             con.Open();
             OleDbCommand cmd = new OleDbCommand("select * from Rent_Car where id=" + id + "", con);

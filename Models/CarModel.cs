@@ -14,8 +14,7 @@ namespace WindowsFormsApp1.Models
         private int price;
         private int max_Passenger;
         private int quantity;
-        private int available_Quantity;
-       
+        private int available_Quantity;       
 
         public int Id { get { return id; } }
         public string Brand { get { return brand; } }
@@ -36,7 +35,6 @@ namespace WindowsFormsApp1.Models
             this.quantity = Convert.ToInt32(quantity);
             this.available_Quantity = Convert.ToInt32(available_Quantity);
         }
-
         public CarModel(int id, string brand, string model, string transmision, string max_Passenger, string price, string quantity)
         {
             this.id = id;
@@ -47,25 +45,6 @@ namespace WindowsFormsApp1.Models
             this.max_Passenger = Convert.ToInt32(max_Passenger);
             this.quantity = Convert.ToInt32(quantity);
         }
-
-        public CarModel(string brand, string model, string transmision)
-        {
-            this.brand = brand;
-            this.model = model;
-            this.transmision = transmision;
-        }
-
-        public CarModel(string brand, string model)
-        {
-            this.brand = brand;
-            this.model = model;
-        }
-
-        public CarModel(int id)
-        {
-            this.id = id;
-        }
-
         public CarModel()
         {
 
@@ -79,11 +58,10 @@ namespace WindowsFormsApp1.Models
             cmd.ExecuteNonQuery();
             con.Close();
         }
-
-        public override void pullById()
+        public override void pullById(int id)
         {
             con.Open();
-            OleDbCommand cmd = new OleDbCommand("select * from Cars_Info where id=" + this.id + "", con);
+            OleDbCommand cmd = new OleDbCommand("select * from Cars_Info where id=" + id + "", con);
             cmd.ExecuteNonQuery();
             con.Close();
             DataTable dataTable = new DataTable();
@@ -92,7 +70,7 @@ namespace WindowsFormsApp1.Models
             
             foreach (DataRow dataRow in dataTable.Rows)
             {
-                id = Convert.ToInt32(dataRow["ID"]);
+                this.id = Convert.ToInt32(dataRow["ID"]);
                 brand = dataRow["Brand"].ToString();
                 model = dataRow["Model"].ToString();
                 transmision = dataRow["Transmision"].ToString();
@@ -103,30 +81,30 @@ namespace WindowsFormsApp1.Models
             con.Close();
         }
 
-        public void pullById(int id)
-        {
-            con.Open();
-            OleDbCommand cmd = new OleDbCommand("select * from Cars_Info where id=" + id + "", con);
-            cmd.ExecuteNonQuery();
-            con.Close();
-            DataTable dataTable = new DataTable();
-            OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
-            dataAdapter.Fill(dataTable);
+        //public void pullById(int id)
+        //{
+        //    con.Open();
+        //    OleDbCommand cmd = new OleDbCommand("select * from Cars_Info where id=" + id + "", con);
+        //    cmd.ExecuteNonQuery();
+        //    con.Close();
+        //    DataTable dataTable = new DataTable();
+        //    OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
+        //    dataAdapter.Fill(dataTable);
 
-            foreach (DataRow dataRow in dataTable.Rows)
-            {
-                this.id = Convert.ToInt32(dataRow["ID"]);
-                this.brand = dataRow["Brand"].ToString();
-                this.model = dataRow["Model"].ToString();
-                this.transmision = dataRow["Transmision"].ToString();
-                this.max_Passenger = Convert.ToInt32(dataRow["Max_Passenger"].ToString());
-                this.price = Convert.ToInt32(dataRow["Price"].ToString());
-                this.quantity = Convert.ToInt32(dataRow["Quantity"].ToString());
-            }
-            con.Close();
-        }
+        //    foreach (DataRow dataRow in dataTable.Rows)
+        //    {
+        //        this.id = Convert.ToInt32(dataRow["ID"]);
+        //        this.brand = dataRow["Brand"].ToString();
+        //        this.model = dataRow["Model"].ToString();
+        //        this.transmision = dataRow["Transmision"].ToString();
+        //        this.max_Passenger = Convert.ToInt32(dataRow["Max_Passenger"].ToString());
+        //        this.price = Convert.ToInt32(dataRow["Price"].ToString());
+        //        this.quantity = Convert.ToInt32(dataRow["Quantity"].ToString());
+        //    }
+        //    con.Close();
+        //}
 
-        public void pullByBMT()
+        public void pullByBMT(string brand, string model, string transmision)
         {
             con.Open();
             OleDbCommand cmd = new OleDbCommand("select * from Cars_Info where Brand='" + brand + "' AND Model='" + model + "' AND Transmision='" + transmision + "'  ", con);
@@ -148,7 +126,6 @@ namespace WindowsFormsApp1.Models
                 available_Quantity = Convert.ToInt32(dataRow["available_Quantity"].ToString());
             }            
         }
-
         public DataTable getDataTable()
         {
             con.Open();
@@ -164,12 +141,10 @@ namespace WindowsFormsApp1.Models
             return dataTable;
         }
 
-
-
-        public DataTable getPrice()
+        public DataTable searchNameOrBrand(string brand, string model)//////////////////
         {
             con.Open();
-            OleDbCommand cmd = new OleDbCommand("select Price from Cars_info where Brand='" + brand + "' AND Model= '" + model + "' AND Transmision='" + transmision + "' ", con);
+            OleDbCommand cmd = new OleDbCommand("select * from Cars_Info where Brand like('%" + brand + "%') or Model like('%" + model + "%') ", con);
             cmd.ExecuteNonQuery();
             con.Close();
             DataTable dataTable = new DataTable();
@@ -178,6 +153,19 @@ namespace WindowsFormsApp1.Models
 
             return dataTable;
         }
+
+        //public DataTable getPrice()
+        //{
+        //    con.Open();
+        //    OleDbCommand cmd = new OleDbCommand("select Price from Cars_info where Brand='" + brand + "' AND Model= '" + model + "' AND Transmision='" + transmision + "' ", con);
+        //    cmd.ExecuteNonQuery();
+        //    con.Close();
+        //    DataTable dataTable = new DataTable();
+        //    OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
+        //    dataAdapter.Fill(dataTable);
+
+        //    return dataTable;
+        //}
 
 
 
@@ -189,7 +177,7 @@ namespace WindowsFormsApp1.Models
             con.Close();
         }
 
-        public void delete()
+        public override void deleteById(int id)
         {
             con.Open();
             OleDbCommand cmd = new OleDbCommand("delete from Cars_Info  where id=" + id + " ", con);
@@ -197,10 +185,10 @@ namespace WindowsFormsApp1.Models
             con.Close();
         }
 
-        public void decrementAvailableQty()
+        public void decrementAvailableQty(int id)
         {
             con.Open();
-            OleDbCommand cmd = new OleDbCommand("update Cars_Info set Available_Quantity=Available_Quantity-1 where Model='" + model + "' AND Transmision='" + transmision + "' ", con);
+            OleDbCommand cmd = new OleDbCommand("update Cars_Info set Available_Quantity=Available_Quantity-1 where ID=" + id + " ", con);
             cmd.ExecuteNonQuery();
             con.Close();
         }
@@ -213,17 +201,6 @@ namespace WindowsFormsApp1.Models
             con.Close();
         }
 
-        public DataTable search()
-        {
-            con.Open();
-            OleDbCommand cmd = new OleDbCommand("select * from Cars_Info where Brand like('%" + brand + "%') or Model like('%" + model + "%') ", con);
-            cmd.ExecuteNonQuery();
-            con.Close();
-            DataTable dataTable = new DataTable();
-            OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
-            dataAdapter.Fill(dataTable);
-
-            return dataTable;
-        }
+       
     }
 }

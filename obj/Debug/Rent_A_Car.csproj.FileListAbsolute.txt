@@ -17,7 +17,6 @@ D:\Proyek\programs\program\oop_kuliah\WindowsFormsApp1\obj\Debug\Rent_A_Car.cspr
 D:\Proyek\programs\program\oop_kuliah\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 D:\Proyek\programs\program\oop_kuliah\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 D:\Proyek\programs\program\oop_kuliah\WindowsFormsApp1\obj\Debug\Rent_A_Car.csprojAssemblyReference.cache
-D:\Proyek\programs\program\oop_kuliah\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Forms.Admin.resources
 D:\Proyek\programs\program\oop_kuliah\WindowsFormsApp1\bin\Debug\Microsoft.IdentityModel.Logging.dll
 D:\Proyek\programs\program\oop_kuliah\WindowsFormsApp1\bin\Debug\Microsoft.IdentityModel.Tokens.dll
 D:\Proyek\programs\program\oop_kuliah\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.dll
@@ -28,3 +27,4 @@ D:\Proyek\programs\program\oop_kuliah\WindowsFormsApp1\bin\Debug\Newtonsoft.Json
 D:\Proyek\programs\program\oop_kuliah\WindowsFormsApp1\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
 D:\Proyek\programs\program\oop_kuliah\WindowsFormsApp1\bin\Debug\Twilio.xml
 D:\Proyek\programs\program\oop_kuliah\WindowsFormsApp1\obj\Debug\Rent_A_Car.csproj.CopyComplete
+D:\Proyek\programs\program\oop_kuliah\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Forms.Admin.resources

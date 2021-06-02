@@ -60,8 +60,8 @@ namespace WindowsFormsApp1
         {
             int i = Convert.ToInt32(dataGridView1.SelectedCells[0].Value.ToString());
 
-            MemberModel memberModel = new MemberModel(i);
-            memberModel.pullById();
+            MemberModel memberModel = new MemberModel();
+            memberModel.pullById(i);
 
             Name.Text = memberModel.Name;
             Email.Text = memberModel.Email;
@@ -114,8 +114,8 @@ namespace WindowsFormsApp1
             int i = Convert.ToInt32(dataGridView1.SelectedCells[0].Value.ToString());
             try
             {
-                MemberModel memberModel = new MemberModel(i);
-                memberModel.delete();
+                MemberModel memberModel = new MemberModel();
+                memberModel.deleteById(i);
                 fillGrid();
                 MessageBox.Show("Record Updated Successfully");
             }

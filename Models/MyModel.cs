@@ -12,12 +12,17 @@ namespace WindowsFormsApp1.Models
 
         }
 
-        public virtual void pullById()
+        public virtual void pullById(int id)
         {
 
         }
 
         public virtual void update()
+        {
+
+        }
+
+        public virtual void deleteById(int id)
         {
 
         }

@@ -28,7 +28,6 @@ namespace WindowsFormsApp1.Models
             this.email = email;
             this.contact = contact;
         }
-
         public MemberModel(string name, string img_Path, string email, string contact)
         {
             this.name = name;
@@ -36,26 +35,13 @@ namespace WindowsFormsApp1.Models
             this.email = email;
             this.contact = contact;
         }
-
-        public MemberModel(string name, string email, string contact)
-        {
-            this.name = name;            
-            this.email = email;
-            this.contact = contact;
-        }
-
-        public MemberModel(int id)
-        {
-            this.id = id;
-        }
-
         public MemberModel()
         {
 
         }
 
 
-        public override void pullById()
+        public override void pullById(int id)
         {
             con.Open();
             OleDbCommand cmd = new OleDbCommand("select * from Members_Info where id = "+ id +" ", con);
@@ -68,14 +54,13 @@ namespace WindowsFormsApp1.Models
 
             foreach (DataRow dataRow in dataTable.Rows)
             {
-                id = Convert.ToInt32(dataRow["ID"]);
+                this.id = Convert.ToInt32(dataRow["ID"]);
                 name = dataRow["Name"].ToString();
                 email = dataRow["Email"].ToString();
                 contact = dataRow["Contact"].ToString();
             }
         }
-
-        public void pullByNEC()
+        public void pullByNEC(string name, string email, string contact)
         {
             con.Open();
             OleDbCommand cmd = new OleDbCommand("select * from Members_Info where Name='" + name + "' AND Email='" + email + "' AND Contact='" + contact + "' ", con);
@@ -88,13 +73,12 @@ namespace WindowsFormsApp1.Models
 
             foreach (DataRow dataRow in dataTable.Rows)
             {
-                id = Convert.ToInt32(dataRow["ID"]);
-                name = dataRow["Name"].ToString();
-                email = dataRow["Email"].ToString();
-                contact = dataRow["Contact"].ToString();
+                this.id = Convert.ToInt32(dataRow["ID"]);
+                this.name = dataRow["Name"].ToString();
+                this.email = dataRow["Email"].ToString();
+                this.contact = dataRow["Contact"].ToString();
             }
         }
-
         public override void push()
         {
             con.Open();
@@ -141,7 +125,7 @@ namespace WindowsFormsApp1.Models
             con.Close();
         }
 
-        public void delete()
+        public override void deleteById(int id)
         {
             con.Open();
             OleDbCommand cmd = new OleDbCommand("delete from Members_Info  where id=" + id + " ", con);

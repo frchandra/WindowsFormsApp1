@@ -32,7 +32,7 @@ namespace WindowsFormsApp1
 
         public void fillGrid(int Id)
         {
-            DataTable dataTable = rentCarModel.getNotReturnded(Id);
+            DataTable dataTable = rentCarModel.getNotReturndedByMemberId(Id);
             dataGridView1.DataSource = dataTable;
         }
 
@@ -42,7 +42,7 @@ namespace WindowsFormsApp1
             i = Convert.ToInt32(dataGridView1.SelectedCells[0].Value.ToString());
             
             carModel.pullById(i);
-            rentCarModel.getRentDateById(i);
+            rentCarModel.pullById(i);
             Label_Model.Text = carModel.Model.ToString();
             Label_Transmision.Text = carModel.Transmision;
             Rent_Date.Text = rentCarModel.Rent_Date;

@@ -12,7 +12,6 @@ namespace WindowsFormsApp1
         }
         private void button1_Click(object sender, EventArgs e)
         {
-
             try
             {
                 CarModel carModel = new CarModel(textBox1.Text, textBox2.Text, comboBox1.Text, textBox4.Text, textBox5.Text, textBox6.Text, textBox6.Text);
@@ -23,12 +22,7 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show(ex.Message.ToString());
                 MessageBox.Show("Please Fill The Data Carefully ");
-                throw;
             }
-
-
-
-
             textBox1.Text = "";
             textBox2.Text = "";
             comboBox1.Text = "";
