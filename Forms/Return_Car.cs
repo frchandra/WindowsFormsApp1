@@ -52,14 +52,9 @@ namespace WindowsFormsApp1
         {
             int i = Convert.ToInt32(dataGridView1.SelectedCells[0].Value.ToString());
             int carId = Convert.ToInt32(dataGridView1.SelectedCells[2].Value.ToString()); 
-
-            rentCarModel.update(i, dateTimePicker1.Value.ToString());
-            
+            rentCarModel.update(i, dateTimePicker1.Value.ToString());            
             carModel.incrementAvailableQty(carId);
-
-            MessageBox.Show("Car Returned Successfully");
-
-            
+            MessageBox.Show("Car Returned Successfully");            
             panel3.Visible = true;
             fillGrid(memberModel.getIdbyName(textBox1.Text));
         }
@@ -68,15 +63,9 @@ namespace WindowsFormsApp1
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             double fine = 0;
-
             rentCarModel.pullById(i);
-
-            DateTime date2 = dateTimePicker1.Value;
-
-            DateTime date0 = Convert.ToDateTime(rentCarModel.Rent_Date);
-            DateTime date1 = Convert.ToDateTime(rentCarModel.Return_Date);
-            TimeSpan timeSpan1 = date2 - date0;
-            TimeSpan timeSpan0 = date1 - date0;
+            TimeSpan timeSpan1 = dateTimePicker1.Value - Convert.ToDateTime(rentCarModel.Rent_Date);
+            TimeSpan timeSpan0 = Convert.ToDateTime(rentCarModel.Return_Date) - Convert.ToDateTime(rentCarModel.Rent_Date);
             if (Math.Ceiling(timeSpan1.TotalDays) > Math.Ceiling(timeSpan0.TotalDays))
             {
                 label3.Visible = true;

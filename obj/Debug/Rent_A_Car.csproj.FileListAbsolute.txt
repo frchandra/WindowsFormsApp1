@@ -6,7 +6,6 @@ D:\Proyek\programs\program\oop_kuliah\WindowsFormsApp1\obj\Debug\WindowsFormsApp
 D:\Proyek\programs\program\oop_kuliah\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Add_Members.resources
 D:\Proyek\programs\program\oop_kuliah\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Garage.resources
 D:\Proyek\programs\program\oop_kuliah\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Forms.Home.resources
-D:\Proyek\programs\program\oop_kuliah\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Login.resources
 D:\Proyek\programs\program\oop_kuliah\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
 D:\Proyek\programs\program\oop_kuliah\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Rent_Car.resources
 D:\Proyek\programs\program\oop_kuliah\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Return_Car.resources
@@ -28,3 +27,4 @@ D:\Proyek\programs\program\oop_kuliah\WindowsFormsApp1\bin\Debug\System.Identity
 D:\Proyek\programs\program\oop_kuliah\WindowsFormsApp1\bin\Debug\Twilio.xml
 D:\Proyek\programs\program\oop_kuliah\WindowsFormsApp1\obj\Debug\Rent_A_Car.csproj.CopyComplete
 D:\Proyek\programs\program\oop_kuliah\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Forms.Admin.resources
+D:\Proyek\programs\program\oop_kuliah\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Login.resources

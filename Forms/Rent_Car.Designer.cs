@@ -184,6 +184,7 @@ namespace WindowsFormsApp1
             this.listBox3.TabIndex = 20;
             this.listBox3.Visible = false;
             this.listBox3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listBox3_MouseClick);
+            
             this.listBox3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listBox3_KeyDown);
             // 
             // listBox2
@@ -198,6 +199,7 @@ namespace WindowsFormsApp1
             this.listBox2.TabIndex = 19;
             this.listBox2.Visible = false;
             this.listBox2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listBox2_MouseClick);
+            
             this.listBox2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listBox2_KeyDown);
             // 
             // listBox1
@@ -212,6 +214,7 @@ namespace WindowsFormsApp1
             this.listBox1.TabIndex = 18;
             this.listBox1.Visible = false;
             this.listBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseClick);
+            
             this.listBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listBox1_KeyDown);
             // 
             // button2

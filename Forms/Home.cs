@@ -54,8 +54,8 @@ namespace WindowsFormsApp1.Forms
 
         private void button8_Click(object sender, EventArgs e)
         {
-            //Admin admin = new Admin();
-            //admin.Show();
+            Admin admin = new Admin();
+            admin.Show();
         }
     }
 }

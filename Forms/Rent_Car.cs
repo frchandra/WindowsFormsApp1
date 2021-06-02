@@ -17,6 +17,8 @@ namespace WindowsFormsApp1
             dateTimePicker2.MinDate = DateTime.Today;
         }
 
+
+
         private void button1_Click(object sender, EventArgs e)
         {
             int i = 0;
@@ -156,7 +158,16 @@ namespace WindowsFormsApp1
 
         private void listBox2_MouseClick(object sender, MouseEventArgs e)
         {
-            Model.Text = listBox2.SelectedItem.ToString();
+            try
+            {
+                Model.Text = listBox2.SelectedItem.ToString();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Harap Pilih Salah Satu Item");
+                throw;
+            }
+            
             listBox2.Visible = false;
         }
 
@@ -216,7 +227,7 @@ namespace WindowsFormsApp1
         }
 
         private void Transmision_KeyDown(object sender, KeyEventArgs e)
-       {
+        {
             if (e.KeyCode == Keys.Down)
             {
                 listBox3.Focus();
@@ -250,17 +261,20 @@ namespace WindowsFormsApp1
             DateTime date2 = dateTimePicker2.Value;
             TimeSpan timeSpan = date2 - date1;
 
-            //foreach (DataRow dataRow in dataTable.Rows)
-            //{
-            //    Label_PricePerDay.Text = dataRow["Price"].ToString();
-            //    double totalPrice = Math.Ceiling(timeSpan.TotalDays) * Convert.ToInt32(dataRow["Price"]);
-            //    Label_Total_Price.Text = totalPrice.ToString();
-            //}
-
             Label_PricePerDay.Text = carModel.Price.ToString();
             double totalPrice = Math.Ceiling(timeSpan.TotalDays) * Convert.ToInt32(carModel.Price);
             Label_Total_Price.Text = totalPrice.ToString();
+
+            //Label_Total_Price.Text = CalculatePrice(Math.Ceiling(timeSpan.TotalDays), (carModel.Price)).ToString();
         }
+
+        public double CalculatePrice(double a, double b)
+        {
+            double c = a * b;
+            return c;
+            throw new NotImplementedException();
+        }
+
 
     }
 }
